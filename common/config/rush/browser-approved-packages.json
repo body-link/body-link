@@ -1,0 +1,98 @@
+// DO NOT ADD COMMENTS IN THIS FILE.  They will be lost when the Rush tool resaves it.
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/approved-packages.schema.json",
+  "packages": [
+    {
+      "name": "@body-link/eslint-config",
+      "allowedCategories": [ "packages" ]
+    },
+    {
+      "name": "@body-link/type-guards",
+      "allowedCategories": [ "packages" ]
+    },
+    {
+      "name": "@rushstack/eslint-config",
+      "allowedCategories": [ "packages", "tools" ]
+    },
+    {
+      "name": "@rushstack/heft",
+      "allowedCategories": [ "packages" ]
+    },
+    {
+      "name": "@rushstack/heft-node-rig",
+      "allowedCategories": [ "packages" ]
+    },
+    {
+      "name": "doctest-ts",
+      "allowedCategories": [ "packages" ]
+    },
+    {
+      "name": "eslint",
+      "allowedCategories": [ "packages", "tools" ]
+    },
+    {
+      "name": "fast-check",
+      "allowedCategories": [ "packages" ]
+    },
+    {
+      "name": "fp-ts",
+      "allowedCategories": [ "packages" ]
+    },
+    {
+      "name": "glob",
+      "allowedCategories": [ "packages" ]
+    },
+    {
+      "name": "io-ts",
+      "allowedCategories": [ "packages" ]
+    },
+    {
+      "name": "io-ts-codegen",
+      "allowedCategories": [ "packages" ]
+    },
+    {
+      "name": "io-ts-from-json-schema",
+      "allowedCategories": [ "packages" ]
+    },
+    {
+      "name": "io-ts-types",
+      "allowedCategories": [ "packages" ]
+    },
+    {
+      "name": "io-ts-validator",
+      "allowedCategories": [ "packages" ]
+    },
+    {
+      "name": "json-schema",
+      "allowedCategories": [ "packages" ]
+    },
+    {
+      "name": "json-schema-fast-check",
+      "allowedCategories": [ "packages" ]
+    },
+    {
+      "name": "monocle-ts",
+      "allowedCategories": [ "packages" ]
+    },
+    {
+      "name": "newtype-ts",
+      "allowedCategories": [ "packages" ]
+    },
+    {
+      "name": "prettier",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "ts-node",
+      "allowedCategories": [ "packages" ]
+    },
+    {
+      "name": "typescript",
+      "allowedCategories": [ "packages", "tools" ]
+    },
+    {
+      "name": "uri-template",
+      "allowedCategories": [ "packages" ]
+    }
+  ]
+}

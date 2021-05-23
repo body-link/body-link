@@ -1,0 +1,50 @@
+{
+  "name": "@body-link/schemas",
+  "version": "1.0.0",
+  "description": "Schemas for Body Link infrastructure",
+  "files": [
+    "lib/**/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/body-link/tachka/tree/master/packages/schemas"
+  },
+  "scripts": {
+    "build": "ts-node -T codegen & heft test --clean",
+    "codegen": "ts-node -T codegen"
+  },
+  "keywords": [
+    "schemas",
+    "JSON"
+  ],
+  "author": {
+    "name": "Dmitrii Bykov",
+    "email": "sukazavr@gmail.com",
+    "url": "https://sukazavr.ru"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@types/json-schema": "~7.0.7",
+    "fp-ts": "^2.10.4",
+    "io-ts": "^2.2.16",
+    "io-ts-types": "^0.5.16",
+    "monocle-ts": "^2.0.0",
+    "newtype-ts": "^0.3.2"
+  },
+  "devDependencies": {
+    "@types/glob": "~7.1.3",
+    "@types/heft-jest": "~1.0.2",
+    "@types/node": "~15.6.0",
+    "@body-link/eslint-config": "workspace:*",
+    "@body-link/type-guards": "workspace:*",
+    "@rushstack/heft-node-rig": "~1.0.21",
+    "@rushstack/heft": "~0.30.5",
+    "glob": "~7.1.7",
+    "eslint": "~7.27.0",
+    "ts-node": "~9.1.1",
+    "typescript": "^4.2.4",
+    "uri-template": "~1.0.1",
+    "io-ts-codegen": "~0.4.5",
+    "io-ts-validator": "~0.0.6"
+  }
+}

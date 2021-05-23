@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.body.link/components/common.json",
+  "description": "Body Link common components",
+  "definitions": {
+    "url": {
+      "description": "Uniform resource locator, see https://en.wikipedia.org/wiki/Uniform_Resource_Locator and https://mathiasbynens.be/demo/url-regex",
+      "type": "string",
+      "pattern": "^(https?|ftp):\\/\\/[^\\s/$.?#].[^\\s]*$",
+      "examples": ["https://body.link", "https://github.com/body-link/tachka"]
+    },
+    "dateTime": {
+      "description": "ISO8601 format, see https://www.iso.org/iso-8601-date-and-time-format.html",
+      "type": "string",
+      "format": "date-time",
+      "examples": ["2021-05-23T03:22:28.074Z"]
+    },
+    "positiveInteger": {
+      "description": "Integer value >= 0",
+      "type": "integer",
+      "minimum": 0,
+      "examples": [0, 100, 99999999]
+    },
+    "percentageTo100": {
+      "description": "Percentage (number) between 0 and 100",
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "examples": [0, 50, 100]
+    },
+    "nonEmptyString": {
+      "description": "Non empty string",
+      "type": "string",
+      "minLength": 1,
+      "examples": ["s", "string with 3 words"]
+    }
+  }
+}

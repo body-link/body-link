@@ -1,0 +1,33 @@
+{
+  "name": "@body-link/type-guards",
+  "version": "1.0.0",
+  "description": "TS type guards for Body Link projects",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/body-link/tachka/tree/master/packages/type-guards"
+  },
+  "scripts": {
+    "build": "heft test --clean"
+  },
+  "keywords": [
+    "typescript",
+    "typeguards",
+    "guards"
+  ],
+  "author": {
+    "name": "Dmitrii Bykov",
+    "email": "sukazavr@gmail.com",
+    "url": "https://sukazavr.ru"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/heft-jest": "~1.0.2",
+    "@types/node": "~15.6.0",
+    "@body-link/eslint-config": "workspace:*",
+    "@rushstack/heft-node-rig": "~1.0.21",
+    "@rushstack/heft": "~0.30.5",
+    "eslint": "~7.27.0",
+    "typescript": "^4.2.4"
+  }
+}

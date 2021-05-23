@@ -1,0 +1,34 @@
+{
+  "name": "@body-link/eslint-config",
+  "version": "1.0.0",
+  "description": "TypeScript ESLint ruleset for Body Link projects",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/body-link/tachka/tree/master/platform/eslint-config"
+  },
+  "scripts": {
+    "build": ""
+  },
+  "keywords": [
+    "eslint",
+    "eslint-config",
+    "typescript"
+  ],
+  "author": {
+    "name": "Dmitrii Bykov",
+    "email": "sukazavr@gmail.com",
+    "url": "https://sukazavr.ru"
+  },
+  "license": "MIT",
+  "peerDependencies": {
+    "eslint": "^6.0.0 || ^7.0.0",
+    "typescript": ">=3.0.0"
+  },
+  "dependencies": {
+    "@rushstack/eslint-config": "~2.3.4"
+  },
+  "devDependencies": {
+    "eslint": "~7.27.0",
+    "typescript": "^4.2.4"
+  }
+}

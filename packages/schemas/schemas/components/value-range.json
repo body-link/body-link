@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.body.link/components/value-range.json",
+  "description": "Any number value between defined minimum and maximum",
+  "type": "object",
+  "required": ["min", "max", "value"],
+  "properties": {
+    "min": {
+      "type": "number"
+    },
+    "max": {
+      "type": "number"
+    },
+    "value": {
+      "type": "number"
+    }
+  },
+  "examples": [
+    {
+      "min": -3,
+      "max": 3,
+      "value": 0
+    },
+    {
+      "min": 0.567,
+      "max": 1,
+      "value": 0.5
+    },
+    {
+      "min": 100,
+      "max": 2,
+      "value": -999999
+    }
+  ]
+}

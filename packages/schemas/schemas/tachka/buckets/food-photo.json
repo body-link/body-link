@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.body.link/tachka/buckets/food-photo.json",
+  "description": "Food photos",
+  "oneOf": [{ "$ref": "https://schemas.body.link/components/image.json" }],
+  "examples": [
+    {
+      "id": "favicon",
+      "url": "https://body.link/favicon.ico",
+      "width": 32,
+      "height": 32
+    }
+  ]
+}

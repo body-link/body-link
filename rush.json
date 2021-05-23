@@ -1,0 +1,143 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/rush.schema.json",
+  "rushVersion": "5.47.0",
+  "pnpmVersion": "6.3.0",
+  "pnpmOptions": {
+    "strictPeerDependencies": true,
+    "preventManualShrinkwrapChanges": true,
+    "useWorkspaces": true
+  },
+  "nodeSupportedVersionRange": ">=12.13.0 <13.0.0 || >=14.15.0 <15.0.0",
+  "ensureConsistentVersions": true,
+  "projectFolderMinDepth": 2,
+  "projectFolderMaxDepth": 2,
+  "approvedPackagesPolicy": {
+    "reviewCategories": [
+      "packages", // package projects that ship
+      "tools" // non-shipping projects that are part of the developer toolchain
+    ],
+    "ignoredNpmScopes": ["@types"]
+  },
+
+  "gitPolicy": {
+    /**
+     * Work at a big company?  Tired of finding Git commits at work with unprofessional Git
+     * emails such as "beer-lover@my-college.edu"?  Rush can validate people's Git email address
+     * before they get started.
+     *
+     * Define a list of regular expressions describing allowable e-mail patterns for Git commits.
+     * They are case-insensitive anchored JavaScript RegExps.  Example: ".*@example\.com"
+     *
+     * IMPORTANT: Because these are regular expressions encoded as JSON string literals,
+     * RegExp escapes need two backslashes, and ordinary periods should be "\\.".
+     */
+    // "allowedEmailRegExps": [
+    //   "[^@]+@users\\.noreply\\.github\\.com",
+    //   "travis@example\\.org"
+    // ],
+    /**
+     * When Rush reports that the address is malformed, the notice can include an example
+     * of a recommended email.  Make sure it conforms to one of the allowedEmailRegExps
+     * expressions.
+     */
+    // "sampleEmail": "mrexample@users.noreply.github.com",
+    /**
+     * The commit message to use when committing changes during 'rush publish'.
+     *
+     * For example, if you want to prevent these commits from triggering a CI build,
+     * you might configure your system's trigger to look for a special string such as "[skip-ci]"
+     * in the commit message, and then customize Rush's message to contain that string.
+     */
+    // "versionBumpCommitMessage": "Applying package updates. [skip-ci]",
+    /**
+     * The commit message to use when committing changes during 'rush version'.
+     *
+     * For example, if you want to prevent these commits from triggering a CI build,
+     * you might configure your system's trigger to look for a special string such as "[skip-ci]"
+     * in the commit message, and then customize Rush's message to contain that string.
+     */
+    // "changeLogUpdateCommitMessage": "Deleting change files and updating change logs for package updates. [skip-ci]"
+  },
+
+  "repository": {
+    /**
+     * The URL of this Git repository, used by "rush change" to determine the base branch for your PR.
+     *
+     * The "rush change" command needs to determine which files are affected by your PR diff.
+     * If you merged or cherry-picked commits from the master branch into your PR branch, those commits
+     * should be excluded from this diff (since they belong to some other PR).  In order to do that,
+     * Rush needs to know where to find the base branch for your PR.  This information cannot be
+     * determined from Git alone, since the "pull request" feature is not a Git concept.  Ideally
+     * Rush would use a vendor-specific protocol to query the information from GitHub, Azure DevOps, etc.
+     * But to keep things simple, "rush change" simply assumes that your PR is against the "master" branch
+     * of the Git remote indicated by the repository.url setting in rush.json.  If you are working in
+     * a GitHub "fork" of the real repo, this setting will be different from the repository URL of your
+     * your PR branch, and in this situation "rush change" will also automatically invoke "git fetch"
+     * to retrieve the latest activity for the remote master branch.
+     */
+    "url": "https://github.com/body-link/tachka.git"
+
+    /**
+     * The default branch name. This tells "rush change" which remote branch to compare against.
+     * The default value is "master"
+     */
+    // "defaultBranch": "master",
+
+    /**
+     * The default remote. This tells "rush change" which remote to compare against if the remote URL is
+     * not set or if a remote matching the provided remote URL is not found.
+     */
+    // "defaultRemote": "origin"
+  },
+
+  "eventHooks": {
+    /**
+     * The list of shell commands to run before the Rush installation starts
+     */
+    "preRushInstall": [
+      // "common/scripts/pre-rush-install.js"
+    ],
+
+    /**
+     * The list of shell commands to run after the Rush installation finishes
+     */
+    "postRushInstall": [],
+
+    /**
+     * The list of shell commands to run before the Rush build command starts
+     */
+    "preRushBuild": [],
+
+    /**
+     * The list of shell commands to run after the Rush build command finishes
+     */
+    "postRushBuild": []
+  },
+
+  "projects": [
+    {
+      "packageName": "@body-link/schemas",
+      "projectFolder": "packages/schemas",
+      "reviewCategory": "packages",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@body-link/type-guards",
+      "projectFolder": "packages/type-guards",
+      "reviewCategory": "packages",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@body-link/eslint-config",
+      "projectFolder": "platform/eslint-config",
+      "reviewCategory": "tools",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@body-link/prettier-config",
+      "projectFolder": "platform/prettier-config",
+      "reviewCategory": "tools",
+      "shouldPublish": true
+    }
+  ]
+}

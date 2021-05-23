@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.body.link/tachka/buckets/label.json",
+  "description": "General labeled values",
+  "oneOf": [{ "$ref": "https://schemas.body.link/components/value-label.json" }],
+  "examples": [
+    {
+      "label": "is true",
+      "value": true
+    },
+    {
+      "label": "is false",
+      "value": false
+    },
+    {
+      "label": "number",
+      "value": 56.63
+    },
+    {
+      "label": "mood",
+      "value": "okay"
+    },
+    {
+      "label": "sleep rating",
+      "value": {
+        "min": 1,
+        "max": 5,
+        "value": 5
+      }
+    },
+    {
+      "label": "body temperature",
+      "value": {
+        "unit": "C",
+        "value": 36.6
+      }
+    }
+  ]
+}
