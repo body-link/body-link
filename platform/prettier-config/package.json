@@ -5,7 +5,7 @@
   "main": "prettier-config.json",
   "repository": {
     "type": "git",
-    "url": "https://github.com/body-link/tachka/tree/master/platform/prettier-config"
+    "url": "https://github.com/body-link/body-link/tree/master/platform/prettier-config"
   },
   "scripts": {
     "build": ""

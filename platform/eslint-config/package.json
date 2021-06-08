@@ -4,7 +4,7 @@
   "description": "TypeScript ESLint ruleset for Body Link projects",
   "repository": {
     "type": "git",
-    "url": "https://github.com/body-link/tachka/tree/master/platform/eslint-config"
+    "url": "https://github.com/body-link/body-link/tree/master/platform/eslint-config"
   },
   "scripts": {
     "build": ""

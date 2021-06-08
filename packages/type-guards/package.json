@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/body-link/tachka/tree/master/packages/type-guards"
+    "url": "https://github.com/body-link/body-link/tree/master/packages/type-guards"
   },
   "scripts": {
     "build": "heft test --clean"

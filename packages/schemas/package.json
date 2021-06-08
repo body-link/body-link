@@ -7,7 +7,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/body-link/tachka/tree/master/packages/schemas"
+    "url": "https://github.com/body-link/body-link/tree/master/packages/schemas"
   },
   "scripts": {
     "build": "ts-node -T codegen & heft test --clean",
