@@ -83,6 +83,14 @@
       "allowedCategories": [ "tools" ]
     },
     {
+      "name": "rxjs",
+      "allowedCategories": [ "packages" ]
+    },
+    {
+      "name": "rxjs-marbles",
+      "allowedCategories": [ "packages" ]
+    },
+    {
       "name": "ts-node",
       "allowedCategories": [ "packages" ]
     },

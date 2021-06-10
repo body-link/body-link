@@ -8,7 +8,8 @@
     "url": "https://github.com/body-link/body-link/tree/master/packages/helpers"
   },
   "scripts": {
-    "build": "heft test --clean"
+    "build": "heft test --clean",
+    "test": "heft test --clean --watch"
   },
   "keywords": [
     "helpers"
@@ -27,6 +28,10 @@
     "@types/heft-jest": "~1.0.2",
     "@types/node": "~15.6.0",
     "eslint": "~7.27.0",
+    "rxjs-marbles": "~7.0.0",
     "typescript": "^4.2.4"
+  },
+  "dependencies": {
+    "rxjs": "~7.1.0"
   }
 }
