@@ -20,7 +20,7 @@
     "url": "https://sukazavr.ru"
   },
   "license": "MIT",
-  "devDependencies": {
+  "dependencies": {
     "prettier": "2.3.0"
   }
 }
