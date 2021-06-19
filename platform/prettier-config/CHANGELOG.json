@@ -1,0 +1,17 @@
+{
+  "name": "@body-link/prettier-config",
+  "entries": [
+    {
+      "version": "1.0.1",
+      "tag": "@body-link/prettier-config_v1.0.1",
+      "date": "Sat, 19 Jun 2021 07:02:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add prettier dependency"
+          }
+        ]
+      }
+    }
+  ]
+}
