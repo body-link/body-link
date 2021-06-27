@@ -70,3 +70,8 @@ export function isSVGElement(value: unknown): value is SVGElement {
 export function isMouseEvent(value: unknown): value is MouseEvent {
   return value instanceof MouseEvent;
 }
+
+// eslint-disable-next-line @typescript-eslint/ban-types
+export function isFunction(value: unknown): value is Function {
+  return typeof value === 'function';
+}

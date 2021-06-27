@@ -56,6 +56,11 @@ const stage: { fn: (v: unknown) => boolean; truthy: unknown[]; falsy: unknown[] 
     truthy: ['str'],
     falsy: [null, undefined, '', 1, true, NaN, new Set(), new Map(), () => null],
   },
+  {
+    fn: tg.isFunction,
+    truthy: [() => null, function () {}],
+    falsy: [null, undefined, '', 1, true, NaN, new Set(), new Map()],
+  },
 ];
 
 stage.forEach((r) => {
