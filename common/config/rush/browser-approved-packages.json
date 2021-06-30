@@ -23,6 +23,10 @@
       "allowedCategories": [ "packages" ]
     },
     {
+      "name": "@testing-library/react-hooks",
+      "allowedCategories": [ "packages" ]
+    },
+    {
       "name": "doctest-ts",
       "allowedCategories": [ "packages" ]
     },
@@ -32,6 +36,10 @@
     },
     {
       "name": "fast-check",
+      "allowedCategories": [ "packages" ]
+    },
+    {
+      "name": "fast-deep-equal",
       "allowedCategories": [ "packages" ]
     },
     {
@@ -81,6 +89,14 @@
     {
       "name": "prettier",
       "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "react",
+      "allowedCategories": [ "packages" ]
+    },
+    {
+      "name": "react-dom",
+      "allowedCategories": [ "packages" ]
     },
     {
       "name": "rxjs",

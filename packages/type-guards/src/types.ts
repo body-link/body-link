@@ -21,8 +21,11 @@ export type TMutable<T> = {
 // eslint-disable-next-line @rushstack/no-new-null
 export type TMaybe<T> = T | null | undefined | unknown;
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type TAnyObject = Record<any, unknown>;
+
 // eslint-disable-next-line @typescript-eslint/ban-types, @typescript-eslint/no-explicit-any
-export type TObjectCheck<T> = T extends object ? T : Record<any, unknown>;
+export type TObjectCheck<T> = T extends object ? T : TAnyObject;
 
 // https://github.com/microsoft/TypeScript/issues/15300#issuecomment-771916993
 export type TTypify<T> = { [K in keyof T]: T[K] };
