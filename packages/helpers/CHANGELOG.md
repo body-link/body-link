@@ -1,6 +1,13 @@
 # Change Log - @body-link/helpers
 
-This log was last generated on Thu, 01 Jul 2021 08:06:57 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Jul 2021 09:12:01 GMT and should not be manually modified.
+
+## 1.3.0
+Thu, 01 Jul 2021 09:12:01 GMT
+
+### Minor changes
+
+- Add rxjs-signal
 
 ## 1.2.0
 Thu, 01 Jul 2021 08:06:57 GMT
