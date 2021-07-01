@@ -2,6 +2,18 @@
   "name": "@body-link/helpers",
   "entries": [
     {
+      "version": "1.1.1",
+      "tag": "@body-link/helpers_v1.1.1",
+      "date": "Thu, 01 Jul 2021 07:55:01 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Export every module"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.1.0",
       "tag": "@body-link/helpers_v1.1.0",
       "date": "Thu, 01 Jul 2021 07:29:10 GMT",
