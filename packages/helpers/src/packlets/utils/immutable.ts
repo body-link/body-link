@@ -21,6 +21,10 @@ export const stringToObject = <T extends TAnyObject>(str: string, isAugmented = 
   }
 };
 
+export const stringToHashNumber = (str: string): number =>
+  // eslint-disable-next-line no-bitwise
+  Math.abs(Array.from(str).reduce((s, c) => (Math.imul(31, s) + c.charCodeAt(0)) | 0, 0));
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const removeUndefined = <T extends Record<string, any>>(v: T, recursive = false): T => {
   return Object.entries(v).reduce<T>((acc, [key, val]) => {
