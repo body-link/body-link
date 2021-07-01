@@ -1,0 +1,22 @@
+{
+  "name": "@body-link/helpers",
+  "entries": [
+    {
+      "version": "1.1.0",
+      "tag": "@body-link/helpers_v1.1.0",
+      "date": "Thu, 01 Jul 2021 07:29:10 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add helpers: atom, rxjs, react-hooks"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@body-link/type-guards\" to `1.1.0`"
+          }
+        ]
+      }
+    }
+  ]
+}

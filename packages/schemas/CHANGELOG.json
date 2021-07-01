@@ -1,0 +1,17 @@
+{
+  "name": "@body-link/schemas",
+  "entries": [
+    {
+      "version": "1.0.1",
+      "tag": "@body-link/schemas_v1.0.1",
+      "date": "Thu, 01 Jul 2021 07:29:10 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@body-link/type-guards\" to `1.1.0`"
+          }
+        ]
+      }
+    }
+  ]
+}

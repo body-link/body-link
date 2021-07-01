@@ -1,0 +1,17 @@
+{
+  "name": "@body-link/type-guards",
+  "entries": [
+    {
+      "version": "1.1.0",
+      "tag": "@body-link/type-guards_v1.1.0",
+      "date": "Thu, 01 Jul 2021 07:29:10 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add isFunction and TTypify"
+          }
+        ]
+      }
+    }
+  ]
+}
