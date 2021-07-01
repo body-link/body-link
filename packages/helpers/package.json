@@ -36,8 +36,8 @@
     "react-dom": ">=17.0.0",
     "rxjs": ">=7.1.0",
     "rxjs-marbles": "~7.0.0",
-    "typescript": "^4.2.4",
-    "ts-snippet": "~5.0.2"
+    "ts-snippet": "~5.0.2",
+    "typescript": "^4.2.4"
   },
   "dependencies": {
     "@body-link/type-guards": "workspace:*",
