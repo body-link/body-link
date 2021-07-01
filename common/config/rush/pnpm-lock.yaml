@@ -24,6 +24,7 @@ importers:
       react-dom: '>=17.0.0'
       rxjs: '>=7.1.0'
       rxjs-marbles: ~7.0.0
+      ts-snippet: ~5.0.2
       typescript: ^4.2.4
     dependencies:
       '@body-link/type-guards': link:../type-guards
@@ -44,6 +45,7 @@ importers:
       react-dom: 17.0.2_react@17.0.2
       rxjs: 7.1.0
       rxjs-marbles: 7.0.0_rxjs@7.1.0
+      ts-snippet: 5.0.2_typescript@4.2.4
       typescript: 4.2.4
 
   ../../packages/schemas:
@@ -5743,6 +5745,15 @@ packages:
       source-map-support: 0.5.19
       typescript: 4.2.4
       yn: 3.1.1
+    dev: true
+
+  /ts-snippet/5.0.2_typescript@4.2.4:
+    resolution: {integrity: sha512-4vZdRz2LXaA+PI3X7/tCsnunixhLkI/nbl105wOHmxo7vB/VL4MclEbV+JFRe9h+Be+wIFsJ1whrLY/bZo4AXQ==}
+    peerDependencies:
+      typescript: ^2.1.0 || ^3.0.0 || ^4.0.0
+    dependencies:
+      tsutils: 3.21.0_typescript@4.2.4
+      typescript: 4.2.4
     dev: true
 
   /tslib/1.14.1:

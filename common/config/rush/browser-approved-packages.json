@@ -91,6 +91,10 @@
       "allowedCategories": [ "tools" ]
     },
     {
+      "name": "raf-stub",
+      "allowedCategories": [ "packages" ]
+    },
+    {
       "name": "react",
       "allowedCategories": [ "packages" ]
     },
