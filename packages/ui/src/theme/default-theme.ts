@@ -1,10 +1,10 @@
-import { IThemeOptions } from './types';
+import { IThemeOptions, EThemeColorSetName } from './types';
 import { createTheme, Theme } from './Theme';
 
 export const defaultThemeOptions: IThemeOptions = {
   gridSize: 8,
-  color: {
-    white: {
+  colorSets: {
+    [EThemeColorSetName.White]: {
       base: '#fff',
       counter: '#000',
       text: '#444',

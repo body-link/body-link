@@ -66,6 +66,7 @@ export const Basic: Story<IProps> = ({
 
   return (
     <Stack isInline spacing={2} p={2}>
+      {/* eslint-disable-next-line react/jsx-no-bind */}
       <button onClick={open}>Open</button>
       <button onClick={overlay.close}>Close</button>
     </Stack>

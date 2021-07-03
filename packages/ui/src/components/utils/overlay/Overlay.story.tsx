@@ -4,6 +4,8 @@ import { useRefFn } from '@body-link/helpers';
 import { Stack } from '../../layout/Stack/Stack';
 import { IOverlayOptions } from './types';
 import { Overlay } from './Overlay';
+import { OverlayArrow } from './OverlayArrow';
+import { EThemeColorSetName } from '../../../theme';
 
 export default {
   title: 'Utils/Overlay',
@@ -11,24 +13,24 @@ export default {
     placement: {
       control: {
         type: 'select',
-        options: [
-          'auto',
-          'auto-start',
-          'auto-end',
-          'top',
-          'bottom',
-          'left',
-          'right',
-          'top-start',
-          'top-end',
-          'bottom-start',
-          'bottom-end',
-          'right-start',
-          'right-end',
-          'left-start',
-          'left-end',
-        ],
       },
+      options: [
+        'auto',
+        'auto-start',
+        'auto-end',
+        'top',
+        'bottom',
+        'left',
+        'right',
+        'top-start',
+        'top-end',
+        'bottom-start',
+        'bottom-end',
+        'right-start',
+        'right-end',
+        'left-start',
+        'left-end',
+      ],
     },
   },
   args: {
@@ -38,7 +40,7 @@ export default {
     closeOnOutsideClick: true,
     closeOnInnerClick: true,
     placement: 'auto',
-    offset: [0, 4],
+    offset: [0, 8],
     hasArrow: true,
   },
 } as Meta;
@@ -87,7 +89,9 @@ export const Basic: Story<IProps> = ({
             <div>Date.now()</div>
             <div>{Date.now()}</div>
           </Stack>
-          {hasArrow && <div ref={overlay.refArrow} />}
+          {hasArrow && (
+            <OverlayArrow size={16} colorSetName={EThemeColorSetName.White} ref={overlay.refArrow} />
+          )}
         </div>
       ),
       refDock,
@@ -115,8 +119,10 @@ export const Basic: Story<IProps> = ({
   return (
     <Stack spacing={10} isCentered>
       <Stack isInline spacing={2} p={2}>
+        {/* eslint-disable-next-line react/jsx-no-bind */}
         <button onClick={open}>Open</button>
         <button onClick={overlay.close}>Close</button>
+        {/* eslint-disable-next-line react/jsx-no-bind */}
         <button onClick={toggle}>Toggle</button>
       </Stack>
       <div ref={refDock} style={{ padding: 16, backgroundColor: 'limegreen' }}>

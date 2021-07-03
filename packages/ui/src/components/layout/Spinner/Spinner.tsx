@@ -38,7 +38,7 @@ const useStyles = makeStyles<IStyleProps>((theme, { color, size }) => {
     root: {
       width: pxSize,
       height: pxSize,
-      backgroundColor: color ?? theme.color.white.counter,
+      backgroundColor: color ?? theme.defaultColorSet.counter,
       borderRadius: '50%',
       animation: `${flip} 1s infinite linear`,
     },

@@ -1,8 +1,10 @@
 export interface IThemeOptions {
   gridSize: number;
-  color: {
-    white: IThemeColorSet;
-  };
+  colorSets: Record<EThemeColorSetName, IThemeColorSet>;
+}
+
+export enum EThemeColorSetName {
+  White = 'White',
 }
 
 export interface IThemeColorSet {
