@@ -117,6 +117,7 @@ importers:
       '@body-link/helpers': workspace:*
       '@body-link/type-guards': workspace:*
       '@emotion/css': '>=11.1.0'
+      '@popperjs/core': ~2.9.2
       '@rushstack/heft': ~0.30.5
       '@rushstack/heft-node-rig': ~1.0.21
       '@storybook/addon-actions': ~6.3.2
@@ -132,10 +133,12 @@ importers:
       memoize-one: ~5.2.1
       react: '>=17.0.0'
       react-dom: '>=17.0.0'
+      rxjs: '>=7.1.0'
       typescript: ^4.2.4
     dependencies:
       '@body-link/helpers': link:../helpers
       '@body-link/type-guards': link:../type-guards
+      '@popperjs/core': 2.9.2
       memoize-one: 5.2.1
     devDependencies:
       '@body-link/eslint-config': link:../../platform/eslint-config
@@ -154,6 +157,7 @@ importers:
       eslint: 7.27.0
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
+      rxjs: 7.1.0
       typescript: 4.2.4
 
   ../../platform/eslint-config:
@@ -3228,7 +3232,6 @@ packages:
 
   /@popperjs/core/2.9.2:
     resolution: {integrity: sha512-VZMYa7+fXHdwIq1TDhSXoVmSPEGM/aa+6Aiq3nVVJ9bXr24zScr+NlKFKC3iPljA7ho/GAZr+d2jOf5GIRC30Q==}
-    dev: true
 
   /@reach/router/1.3.4_react-dom@17.0.2+react@17.0.2:
     resolution: {integrity: sha512-+mtn9wjlB9NN2CNnnC/BRYtwdKBfSyyasPYraNAyvaV1occr/5NnB4CVzjEZipNHwYebQwcndGUmpFzxAUoqSA==}

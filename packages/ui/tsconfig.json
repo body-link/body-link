@@ -3,6 +3,5 @@
   "compilerOptions": {
     "lib": ["es2020", "dom"],
     "types": ["heft-jest", "node"]
-  },
-  "exclude": ["**/*.story.tsx"]
+  }
 }

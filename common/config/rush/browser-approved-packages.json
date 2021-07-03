@@ -19,6 +19,10 @@
       "allowedCategories": [ "packages" ]
     },
     {
+      "name": "@popperjs/core",
+      "allowedCategories": [ "packages" ]
+    },
+    {
       "name": "@rushstack/eslint-config",
       "allowedCategories": [ "packages", "tools" ]
     },
