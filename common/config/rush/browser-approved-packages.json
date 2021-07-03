@@ -7,7 +7,15 @@
       "allowedCategories": [ "packages" ]
     },
     {
+      "name": "@body-link/helpers",
+      "allowedCategories": [ "packages" ]
+    },
+    {
       "name": "@body-link/type-guards",
+      "allowedCategories": [ "packages" ]
+    },
+    {
+      "name": "@emotion/css",
       "allowedCategories": [ "packages" ]
     },
     {

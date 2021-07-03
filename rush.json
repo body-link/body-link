@@ -3,7 +3,7 @@
   "rushVersion": "5.47.0",
   "pnpmVersion": "6.7.1",
   "pnpmOptions": {
-    "strictPeerDependencies": true,
+    "strictPeerDependencies": false,
     "preventManualShrinkwrapChanges": true,
     "useWorkspaces": true
   },
