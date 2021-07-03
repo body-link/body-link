@@ -14,9 +14,9 @@ export interface IOverlayStaticPayload<Options> {
 }
 
 export interface IOverlayOptions extends IOverlayStaticOptions {
-  placement: Placement;
-  offset: [number, number] | null;
   hasArrow: boolean;
+  placement: Placement;
+  offset: 0 | [number, number];
 }
 
 export interface IOverlayPayload extends IOverlayStaticPayload<IOverlayOptions> {

@@ -81,7 +81,7 @@ export class OverlayStatic<T1 extends IOverlayStaticOptions, T2 extends IOverlay
           ].filter(isDefined)
         ).pipe(take(1));
       })
-    ).subscribe(this.close);
+    ).subscribe(() => this.close());
   }
 
   public destroy = (): void => {
