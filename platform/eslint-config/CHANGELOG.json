@@ -1,0 +1,17 @@
+{
+  "name": "@body-link/eslint-config",
+  "entries": [
+    {
+      "version": "1.0.2",
+      "tag": "@body-link/eslint-config_v1.0.2",
+      "date": "Sat, 03 Jul 2021 14:53:25 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Set react version to 17.0"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -2,6 +2,21 @@
   "name": "@body-link/schemas",
   "entries": [
     {
+      "version": "1.0.2",
+      "tag": "@body-link/schemas_v1.0.2",
+      "date": "Sat, 03 Jul 2021 14:53:25 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@body-link/eslint-config\" to `1.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@body-link/type-guards\" to `1.1.1`"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.0.1",
       "tag": "@body-link/schemas_v1.0.1",
       "date": "Thu, 01 Jul 2021 07:29:10 GMT",

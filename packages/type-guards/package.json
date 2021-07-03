@@ -1,6 +1,6 @@
 {
   "name": "@body-link/type-guards",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "TS type guards for Body Link projects",
   "main": "lib/index.js",
   "repository": {
