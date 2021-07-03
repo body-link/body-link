@@ -116,6 +116,12 @@
 
   "projects": [
     {
+      "packageName": "@body-link/ui",
+      "projectFolder": "packages/ui",
+      "reviewCategory": "packages",
+      "shouldPublish": true
+    },
+    {
       "packageName": "@body-link/schemas",
       "projectFolder": "packages/schemas",
       "reviewCategory": "packages",

@@ -115,6 +115,10 @@
       "allowedCategories": [ "packages" ]
     },
     {
+      "name": "ts-snippet",
+      "allowedCategories": [ "packages" ]
+    },
+    {
       "name": "typescript",
       "allowedCategories": [ "packages", "tools" ]
     },

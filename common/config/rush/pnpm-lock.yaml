@@ -111,6 +111,37 @@ importers:
       eslint: 7.27.0
       typescript: 4.2.4
 
+  ../../packages/ui:
+    specifiers:
+      '@body-link/eslint-config': workspace:*
+      '@body-link/type-guards': workspace:*
+      '@rushstack/eslint-config': ~2.3.4
+      '@rushstack/heft': ~0.30.5
+      '@rushstack/heft-node-rig': ~1.0.21
+      '@types/heft-jest': ~1.0.2
+      '@types/node': ~15.6.0
+      '@types/react': ^17.0.4
+      '@types/react-dom': ^17.0.3
+      eslint: ~7.27.0
+      react: '>=17.0.0'
+      react-dom: '>=17.0.0'
+      typescript: ^4.2.4
+    dependencies:
+      '@body-link/type-guards': link:../type-guards
+    devDependencies:
+      '@body-link/eslint-config': link:../../platform/eslint-config
+      '@rushstack/eslint-config': 2.3.4_eslint@7.27.0+typescript@4.2.4
+      '@rushstack/heft': 0.30.5
+      '@rushstack/heft-node-rig': 1.0.21_@rushstack+heft@0.30.5
+      '@types/heft-jest': 1.0.2
+      '@types/node': 15.6.0
+      '@types/react': 17.0.11
+      '@types/react-dom': 17.0.8
+      eslint: 7.27.0
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+      typescript: 4.2.4
+
   ../../platform/eslint-config:
     specifiers:
       '@rushstack/eslint-config': ~2.3.4

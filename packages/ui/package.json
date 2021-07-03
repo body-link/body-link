@@ -1,0 +1,47 @@
+{
+  "name": "@body-link/ui",
+  "version": "1.0.0",
+  "description": "Body Link Design System",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/body-link/body-link/tree/master/packages/ui"
+  },
+  "scripts": {
+    "build": "heft test --clean",
+    "test": "heft test --clean --watch"
+  },
+  "keywords": [
+    "react",
+    "design",
+    "ux",
+    "ui"
+  ],
+  "author": {
+    "name": "Dmitrii Bykov",
+    "email": "sukazavr@gmail.com",
+    "url": "https://sukazavr.ru"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@body-link/eslint-config": "workspace:*",
+    "@rushstack/eslint-config": "~2.3.4",
+    "@rushstack/heft": "~0.30.5",
+    "@rushstack/heft-node-rig": "~1.0.21",
+    "@types/heft-jest": "~1.0.2",
+    "@types/node": "~15.6.0",
+    "@types/react": "^17.0.4",
+    "@types/react-dom": "^17.0.3",
+    "eslint": "~7.27.0",
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0",
+    "typescript": "^4.2.4"
+  },
+  "dependencies": {
+    "@body-link/type-guards": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0"
+  }
+}
