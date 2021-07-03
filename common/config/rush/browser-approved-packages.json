@@ -47,6 +47,10 @@
       "allowedCategories": [ "packages" ]
     },
     {
+      "name": "@storybook/react",
+      "allowedCategories": [ "packages" ]
+    },
+    {
       "name": "@testing-library/react-hooks",
       "allowedCategories": [ "packages" ]
     },
