@@ -28,3 +28,4 @@
 #--------------------------------------------
 
 # (Add your project-specific overrides here)
+/lib/**/*.test.*

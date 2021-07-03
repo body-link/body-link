@@ -26,6 +26,7 @@
   "license": "MIT",
   "devDependencies": {
     "@body-link/eslint-config": "workspace:*",
+    "@emotion/css": ">=11.1.0",
     "@rushstack/heft": "~0.30.5",
     "@rushstack/heft-node-rig": "~1.0.21",
     "@storybook/addon-actions": "~6.3.2",
@@ -41,14 +42,13 @@
     "react": ">=17.0.0",
     "react-dom": ">=17.0.0",
     "rxjs": ">=7.1.0",
-    "typescript": "^4.2.4",
-    "@emotion/css": ">=11.1.0"
+    "typescript": "^4.2.4"
   },
   "dependencies": {
     "@body-link/helpers": "workspace:*",
     "@body-link/type-guards": "workspace:*",
-    "memoize-one": "~5.2.1",
-    "@popperjs/core": "~2.9.2"
+    "@popperjs/core": "~2.9.2",
+    "memoize-one": "~5.2.1"
   },
   "peerDependencies": {
     "@emotion/css": ">=11.1.0",

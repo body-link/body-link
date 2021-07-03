@@ -28,4 +28,5 @@
 #--------------------------------------------
 
 # (Add your project-specific overrides here)
-*.story.js
+/lib/**/*.test.*
+/lib/**/*.story.*
