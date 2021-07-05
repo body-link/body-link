@@ -1,6 +1,13 @@
 # Change Log - @body-link/helpers
 
-This log was last generated on Mon, 05 Jul 2021 15:07:11 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Jul 2021 16:07:29 GMT and should not be manually modified.
+
+## 1.4.1
+Mon, 05 Jul 2021 16:07:29 GMT
+
+### Patches
+
+- Fix atom guards
 
 ## 1.4.0
 Mon, 05 Jul 2021 15:07:11 GMT

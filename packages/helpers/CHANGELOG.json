@@ -2,6 +2,18 @@
   "name": "@body-link/helpers",
   "entries": [
     {
+      "version": "1.4.1",
+      "tag": "@body-link/helpers_v1.4.1",
+      "date": "Mon, 05 Jul 2021 16:07:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix atom guards"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.4.0",
       "tag": "@body-link/helpers_v1.4.0",
       "date": "Mon, 05 Jul 2021 15:07:11 GMT",
