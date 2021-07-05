@@ -61,6 +61,18 @@ describe('useObservable', () => {
     expect(result.current).toBe(43);
   });
 
+  it('should skip the init state if lensed Atom given', () => {
+    const $ = Atom.create({ value: 43 }).lens('value');
+    const { result } = renderHook(() => useObservable($, 1));
+    expect(result.current).toBe(43);
+  });
+
+  it('should work with lensed Atom', () => {
+    const $ = Atom.create({ value: 43 }).lens('value');
+    const { result } = renderHook(() => useObservable($));
+    expect(result.current).toBe(43);
+  });
+
   it('should skip the init state if ReadOnlyAtom given', () => {
     const $ = Atom.create({ value: 43 }).view('value');
     const { result } = renderHook(() => useObservable($, 1));
