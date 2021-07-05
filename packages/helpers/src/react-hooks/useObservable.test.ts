@@ -28,8 +28,8 @@ describe('useObservable', () => {
       spy();
       return state;
     });
-    expect(result.current).toBe(undefined);
-    expect(spy).toHaveBeenCalledTimes(1);
+    expect(result.current).toBe(3);
+    expect(spy).toHaveBeenCalledTimes(2);
 
     act(() => {
       requestAnimationFrame.step();

@@ -35,10 +35,9 @@ export const createUseWatcherSR =
         let currentState = initialState;
         const sub = mState$.subscribe((nextState) => {
           if (currentState !== nextState) {
-            window.requestAnimationFrame(() => {
-              setState(() => nextState);
-              currentState = nextState;
-            });
+            // Use callback to safely transfer fn in stream
+            setState(() => nextState);
+            currentState = nextState;
           }
         });
         return () => {

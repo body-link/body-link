@@ -22,11 +22,9 @@ export function useObservable<T>($: Observable<T>, initialValue?: T): TOption<T>
     let currentValue = initialValue;
     const sub = $.subscribe((nextValue) => {
       if (currentValue !== nextValue) {
-        window.requestAnimationFrame(() => {
-          // Use callback to safely transfer fn in stream
-          setValue(() => nextValue);
-          currentValue = nextValue;
-        });
+        // Use callback to safely transfer fn in stream
+        setValue(() => nextValue);
+        currentValue = nextValue;
       }
     });
     return () => sub.unsubscribe();
