@@ -2,6 +2,18 @@
   "name": "@body-link/helpers",
   "entries": [
     {
+      "version": "1.4.0",
+      "tag": "@body-link/helpers_v1.4.0",
+      "date": "Mon, 05 Jul 2021 15:07:11 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Remove window.requestAnimationFrame"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.3.1",
       "tag": "@body-link/helpers_v1.3.1",
       "date": "Sat, 03 Jul 2021 14:53:25 GMT",
