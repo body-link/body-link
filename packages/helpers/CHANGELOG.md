@@ -1,6 +1,13 @@
 # Change Log - @body-link/helpers
 
-This log was last generated on Mon, 05 Jul 2021 16:07:29 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Jul 2021 06:36:20 GMT and should not be manually modified.
+
+## 1.4.2
+Tue, 06 Jul 2021 06:36:20 GMT
+
+### Patches
+
+- Fix withDefaultImpl allow default value to be set
 
 ## 1.4.1
 Mon, 05 Jul 2021 16:07:29 GMT

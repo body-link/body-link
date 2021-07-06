@@ -2,6 +2,18 @@
   "name": "@body-link/helpers",
   "entries": [
     {
+      "version": "1.4.2",
+      "tag": "@body-link/helpers_v1.4.2",
+      "date": "Tue, 06 Jul 2021 06:36:20 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix withDefaultImpl allow default value to be set"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.4.1",
       "tag": "@body-link/helpers_v1.4.1",
       "date": "Mon, 05 Jul 2021 16:07:29 GMT",

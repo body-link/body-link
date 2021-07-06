@@ -1,6 +1,11 @@
 # Change Log - @body-link/ui
 
-This log was last generated on Mon, 05 Jul 2021 16:07:29 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Jul 2021 06:36:20 GMT and should not be manually modified.
+
+## 1.1.3
+Tue, 06 Jul 2021 06:36:20 GMT
+
+_Version update only_
 
 ## 1.1.2
 Mon, 05 Jul 2021 16:07:29 GMT
