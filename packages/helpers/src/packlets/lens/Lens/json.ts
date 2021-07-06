@@ -1,4 +1,5 @@
-import { TOption } from '@body-link/type-guards';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { isDefined, TOption } from '@body-link/type-guards';
 import { Lens } from './base';
 import { Prism } from '../Prism';
 import { setKey, structEq } from '../utils';
@@ -11,22 +12,23 @@ const keyCache: SimpleCache<string, Lens<any, any>> = new SimpleCache((key) =>
   )
 );
 
-const indexCache: SimpleCache<number, Prism<any[], any>> = new SimpleCache((i) =>
+const indexCache: SimpleCache<number, Prism<any[], any>> = new SimpleCache((index) =>
   Prism.create(
-    (xs) => xs[i],
+    (xs) => xs[index],
     (v, xs) => {
-      if (xs.length <= i) {
-        return xs.concat(Array(i - xs.length), [v]);
-      } else if (structEq(v, xs[i])) {
+      if (xs.length <= index) {
+        return xs.concat(Array(index - xs.length), [v]);
+      } else if (structEq(v, xs[index])) {
         return xs;
       } else {
-        return xs.slice(0, i).concat([v], xs.slice(i + 1));
+        return xs.slice(0, index).concat([v], xs.slice(index + 1));
       }
     }
   )
 );
 
 // @NOTE only need this interface to add JSDocs for this call.
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export interface KeyImplFor<TObject> {
   /**
    * Create a lens focusing on a key of an object.
@@ -90,6 +92,7 @@ export function keyImpl<TValue = any>(k: string): Prism<{ [k: string]: TValue },
 // Pretty cool!
 export function keyImpl<TObject = any>(): KeyImplFor<TObject>;
 
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export function keyImpl<TObject>(k?: string) {
   return k === undefined
     ? // type-safe key
@@ -100,13 +103,17 @@ export function keyImpl<TObject>(k?: string) {
 }
 
 export function indexImpl<TItem>(i: number): Prism<TItem[], TItem> {
-  if (i < 0) throw new TypeError(`${i} is not a valid array index, expected >= 0`);
+  if (i < 0) {
+    throw new TypeError(`${i} is not a valid array index, expected >= 0`);
+  }
   return indexCache.getOrCreate(i);
 }
 
 export function withDefaultImpl<T>(defaultValue: T): Lens<TOption<T>, T> {
-  // @TODO is this cast safe?
-  return Lens.replace(undefined, defaultValue) as Lens<TOption<T>, T>;
+  return Lens.create<TOption<T>, T>(
+    (s) => (isDefined(s) ? s : defaultValue),
+    (v) => v
+  );
 }
 
 function choose<T, U>(getLens: (state: T) => Lens<T, U>): Lens<T, U> {
@@ -138,6 +145,7 @@ export function findImpl<T>(predicate: (x: T) => boolean): Prism<T[], T> {
 // for a nice consumer API with all lens function under the same namespace,
 // together with the lens type.
 declare module './base' {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
   export namespace Lens {
     export let key: typeof keyImpl;
 

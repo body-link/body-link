@@ -1,15 +1,13 @@
 import { createModify } from './utils';
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export interface Optic<TSource, T, U> {
   get(s: TSource): T;
-
   set(v: U, s: TSource): TSource;
-
   modify(updateFn: (v: T) => U, s: TSource): TSource; // tslint:disable-line no-unused-vars
-
-  // @TODO can't optic compose?
 }
 
+// eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace Optic {
   export function optic<TSource, T, U>(
     getter: (s: TSource) => T,

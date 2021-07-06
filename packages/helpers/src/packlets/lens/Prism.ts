@@ -3,14 +3,14 @@ import { Lens } from './Lens';
 import { Optic } from './Optic';
 import { createModify } from './utils';
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export interface Prism<TSource, T> extends Optic<TSource, TOption<T>, T> {
   compose<U>(next: Lens<T, U>): Prism<TSource, U>;
-
   compose<U>(next: Lens<TOption<T>, U>): Lens<TSource, U>;
-
   compose<U>(next: Prism<T, U>): Prism<TSource, U>;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace Prism {
   export function create<TSource, T>(
     getter: (s: TSource) => TOption<T>,
@@ -20,7 +20,6 @@ export namespace Prism {
       get: getter,
       set: setter,
       modify: createModify(getter, setter),
-
       compose<U>(next: Lens<T, U> | Prism<T, U>): Prism<TSource, U> {
         // no runtime dispatch – the implementation works for both
         // lens and prism argument

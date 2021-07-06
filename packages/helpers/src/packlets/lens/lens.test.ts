@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Lens } from './Lens';
 import { structEq } from './utils';
 
-function roundtrip<T, U>(name: string, l: Lens<T, U>, obj: T, oldVal: U, newVal: U) {
+function roundtrip<T, U>(name: string, l: Lens<T, U>, obj: T, oldVal: U, newVal: U): void {
   describe(`lens roundtrip: ${name}`, () => {
     it('get', () => expect(l.get(obj)).toEqual(oldVal));
     it('set', () => expect(l.get(l.set(newVal, obj))).toEqual(newVal));
@@ -10,7 +11,7 @@ function roundtrip<T, U>(name: string, l: Lens<T, U>, obj: T, oldVal: U, newVal:
 
 // tslint:disable-next-line
 // see https://www.schoolofhaskell.com/school/to-infinity-and-beyond/pick-of-the-week/a-little-lens-starter-tutorial#the-lens-laws-
-function testLaws<T, U>(l: Lens<T, U>, object: T, value1: U, value2: U, name: string) {
+function testLaws<T, U>(l: Lens<T, U>, object: T, value1: U, value2: U, name: string): void {
   describe(`lens laws: ${name}`, () => {
     it('get-put', () => expect(structEq(object, l.set(l.get(object), object))).toBeTruthy());
     it('put-get', () => expect(structEq(value1, l.get(l.set(value1, object)))).toBeTruthy());
@@ -19,14 +20,20 @@ function testLaws<T, U>(l: Lens<T, U>, object: T, value1: U, value2: U, name: st
   });
 }
 
-function testLens<O, P>(name: string, l: Lens<O, P>, obj: O, currentValue: P, newValue1: P, newValue2: P) {
+function testLens<O, P>(
+  name: string,
+  l: Lens<O, P>,
+  obj: O,
+  currentValue: P,
+  newValue1: P,
+  newValue2: P
+): void {
   testLaws(l, obj, newValue1, newValue2, name);
   roundtrip(name, l, obj, currentValue, newValue1);
 }
 
 describe('identity', () => {
   testLens('basic', Lens.identity<any>(), 'any', 'any', 'other', 'another');
-
   testLens('composed', Lens.identity<any>(), 'any', 'any', 'other', 'another');
 });
 
@@ -151,19 +158,22 @@ describe('json', () => {
 
   describe('withDefault', () => {
     const s = { a: 5, b: 6 }; // c is undefined
-    const l1 = Lens.key<number>('a').compose(Lens.withDefault(666));
-    const l2 = Lens.key<number>('c').compose(Lens.withDefault(666));
+    const l1 = Lens.key<number>('a').compose(Lens.withDefault(777));
+    const l2 = Lens.key<number>('c').compose(Lens.withDefault(777));
 
-    it('get defined', () => expect(l1.get(s)).toEqual(5));
-    it('set defined', () => expect(l1.set(6, s)).toEqual({ a: 6, b: 6 }));
-    it('get undefined', () => expect(l2.get(s)).toEqual(666));
-    it('set undefined', () => expect(l2.set(6, s)).toEqual({ a: 5, b: 6, c: 6 }));
+    it('should get defined value', () => expect(l1.get(s)).toEqual(5));
+    it('should reset defined value', () => expect(l1.set(6, s)).toEqual({ a: 6, b: 6 }));
+    it('should get default value instead of undefined', () => expect(l2.get(s)).toEqual(777));
+    it('should reset undefined value other then default', () =>
+      expect(l2.set(6, s)).toEqual({ a: 5, b: 6, c: 6 }));
+    it('should reset undefined value on default', () =>
+      expect(l2.set(777, s)).toEqual({ a: 5, b: 6, c: 777 }));
   });
 
   describe('withDefault transforms Prism into Lens', () => {
     const s = { a: 5, b: 6 }; // c is undefined
-    const l1 = Lens.key<number>('a').compose(Lens.withDefault(666));
-    const l2 = Lens.key<number>('c').compose(Lens.withDefault(666));
+    const l1 = Lens.key<number>('a').compose(Lens.withDefault(777));
+    const l2 = Lens.key<number>('c').compose(Lens.withDefault(777));
 
     // the lines below should compile
     let _: number = l1.get(s);

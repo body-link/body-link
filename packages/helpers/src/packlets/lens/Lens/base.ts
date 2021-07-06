@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { SimpleCache } from '../../simple-cache';
 import { createModify } from '../utils';
 import { Optic } from '../Optic';
@@ -14,11 +15,13 @@ import { Prism } from '../Prism';
  *
  * Read more here: https://en.wikibooks.org/wiki/Haskell/Lenses_and_functional_references
  */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export interface Lens<TSource, T> extends Optic<TSource, T, T> {
   compose<U>(next: Lens<T, U>): Lens<TSource, U>;
   compose<U>(next: Prism<T, U>): Prism<TSource, U>;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace Lens {
   /**
    * Create a lens.
@@ -96,9 +99,9 @@ export namespace Lens {
     }
   }
 
-  const _identity = create<any, any>(
-    (x) => x,
-    (x: any, _: any) => x
+  const _identity: Lens<any, any> = create<any, any>(
+    (s) => s,
+    (v) => v
   );
 
   /**
@@ -108,15 +111,15 @@ export namespace Lens {
     return _identity as Lens<T, T>;
   }
 
-  const _nothing = Prism.create(
-    (_) => undefined,
-    (_: any, o: any) => o
+  const _nothing: Prism<any, any> = Prism.create(
+    () => undefined,
+    (v, s) => s
   );
 
   /**
    * A lens that always returns `undefined` on `get` and does no change on `set`.
    */
-  export function nothing<TSource, T>() {
+  export function nothing<TSource, T>(): Prism<TSource, T> {
     return _nothing as Prism<TSource, T>;
   }
 }

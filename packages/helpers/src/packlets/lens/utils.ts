@@ -10,7 +10,9 @@ export function setKey<T, K extends keyof T>(k: K, v: T[K], o: T): T {
     // https://jsperf.com/focal-setkey-for-loop-vs-object-assign
     const r: { [k in keyof T]: T[k] } = {} as never;
     // eslint-disable-next-line guard-for-in
-    for (const p in o) r[p] = o[p];
+    for (const p in o) {
+      r[p] = o[p];
+    }
     r[k] = v;
     return r;
   }
