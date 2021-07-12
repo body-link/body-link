@@ -5,6 +5,7 @@ import { useMemo, MutableRefObject } from 'react';
 
 // eslint-disable-next-line @rushstack/no-new-null
 export type HTMLElementOrNull = HTMLElement | null;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type CallbackRef = (node: HTMLElementOrNull) => any;
 export type AnyRef = CallbackRef | MutableRefObject<HTMLElementOrNull>;
 

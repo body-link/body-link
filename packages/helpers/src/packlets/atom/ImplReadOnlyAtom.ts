@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { TOption } from '@body-link/type-guards';
 import { BehaviorSubject, Subscriber, Subscription } from 'rxjs';
 import { Lens, Prism, structEq } from '../lens';
@@ -35,10 +36,16 @@ export abstract class AbstractReadOnlyAtom<T> extends BehaviorSubject<T> impleme
 }
 
 export class ImplReadOnlyAtom<TSource, TDest> extends AbstractReadOnlyAtom<TDest> {
-  constructor(
-    private _source: ReadOnlyAtom<TSource>,
-    private _getter: (x: TSource) => TDest,
-    private _eq: (x: TDest, y: TDest) => boolean = structEq
+  private _subscription: Subscription | null = null;
+  private _refCount: number = 0;
+  private _source: ReadOnlyAtom<TSource>;
+  private readonly _getter: (x: TSource) => TDest;
+  private readonly _eq: (x: TDest, y: TDest) => boolean;
+
+  public constructor(
+    source: ReadOnlyAtom<TSource>,
+    getter: (x: TSource) => TDest,
+    eq: (x: TDest, y: TDest) => boolean = structEq
   ) {
     // @NOTE this is a major hack to optimize for not calling
     // _getter the extra time here. This makes the underlying
@@ -49,9 +56,12 @@ export class ImplReadOnlyAtom<TSource, TDest> extends AbstractReadOnlyAtom<TDest
     // descendant of BehaviorSubject as well), which will emit a
     // value right away, triggering our _onSourceValue.
     super(undefined!);
+    this._source = source;
+    this._getter = getter;
+    this._eq = eq;
   }
 
-  get() {
+  public get(): TDest {
     // Optimization: in case we're already subscribed to the
     // source atom, the BehaviorSubject.getValue will return
     // an up-to-date computed lens value.
@@ -61,18 +71,16 @@ export class ImplReadOnlyAtom<TSource, TDest> extends AbstractReadOnlyAtom<TDest
     return this._subscription ? this.getValue() : this._getter(this._source.get());
   }
 
-  private _onSourceValue(x: TSource) {
-    const prevValue = this.getValue();
+  private _onSourceValue(x: TSource): void {
+    const prev = this.getValue();
     const next = this._getter(x);
-
-    if (!this._eq(prevValue, next)) this.next(next);
+    if (!this._eq(prev, next)) {
+      this.next(next);
+    }
   }
 
-  private _subscription: Subscription | null = null;
-  private _refCount = 0;
-
   // Rx method overrides
-  _subscribe(subscriber: Subscriber<TDest>) {
+  private _subscribe(subscriber: Subscriber<TDest>): Subscription {
     // tslint:disable-line function-name
     if (!this._subscription) {
       this._subscription = this._source.subscribe((x) => this._onSourceValue(x));
@@ -91,7 +99,7 @@ export class ImplReadOnlyAtom<TSource, TDest> extends AbstractReadOnlyAtom<TDest
     return sub;
   }
 
-  unsubscribe() {
+  public unsubscribe(): void {
     if (this._subscription) {
       this._subscription.unsubscribe();
       this._subscription = null;

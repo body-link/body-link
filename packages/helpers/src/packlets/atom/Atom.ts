@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Atom as _Atom, ReadOnlyAtom } from './types';
 import { ImplAtom } from './ImplAtom';
 import { ImplCombinedAtom } from './ImplCombinedAtom';
@@ -6,6 +7,7 @@ import { ImplCombinedAtom } from './ImplCombinedAtom';
 // the namespace below and then export it.
 export type Atom<T> = _Atom<T>;
 
+// eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace Atom {
   /**
    * Create an atom with given initial value.

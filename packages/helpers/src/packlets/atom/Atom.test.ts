@@ -4,7 +4,7 @@ import { Atom } from './Atom';
 import { Lens, structEq } from '../lens';
 import { ReadOnlyAtom } from './types';
 
-function testAtom(newAtom: (x: number) => Atom<number>) {
+function testAtom(newAtom: (x: number) => Atom<number>): void {
   it('atom/basic', async () => {
     const a = newAtom(1);
     let expected = 1;
@@ -34,7 +34,7 @@ function testAtom(newAtom: (x: number) => Atom<number>) {
   it('atom/observable: distinct values', () => {
     const a = newAtom(1);
     const observations: number[] = [];
-    const cb = (x: number) => observations.push(x);
+    const cb = (x: number): number => observations.push(x);
     const subscription = a.subscribe(cb);
     [2, 3, 3, 3, 1].forEach((x) => a.set(x));
 
@@ -51,7 +51,7 @@ function testDerivedAtom(
     onCalled: (a: number) => void
   ) => ReadOnlyAtom<number>,
   create: (x: number) => Atom<number> = Atom.create
-) {
+): void {
   describe('unsub in modify', () => {
     const a = create(5);
 
@@ -266,7 +266,7 @@ describe('atom', () => {
         .lens(
           Lens.create(
             (x: number) => x + 1,
-            (v: number, _: number) => v - 1
+            (v: number) => v - 1
           )
         );
 
@@ -286,7 +286,7 @@ describe('atom', () => {
         .lens(
           Lens.create(
             (x: number) => x + 1,
-            (v: number, _: number) => v - 1
+            (v: number) => v - 1
           )
         );
 
@@ -365,7 +365,7 @@ describe('atom', () => {
 
         const observations: TOption<number>[] = [];
 
-        const cb = (x: TOption<number>) => {
+        const cb = (x: TOption<number>): void => {
           observations.push(x);
         };
         const subscription = first.subscribe(cb);
@@ -388,7 +388,7 @@ describe('atom', () => {
             onCalled(x);
             return f(x);
           },
-          (v, _) => v
+          (v) => v
         )
       )
     );
@@ -508,7 +508,7 @@ describe('atom', () => {
         return `Ho ${x}`;
       });
 
-      function testCalls(a: number, b: number, c: number, d: number) {
+      function testCalls(a: number, b: number, c: number, d: number): void {
         expect([called1, called2, called3, called4]).toEqual([a, b, c, d]);
       }
 
@@ -570,11 +570,16 @@ describe('atom', () => {
         return `HU ${x}`;
       });
 
-      function testCalls(a: number, b: number, c: number, d: number, e: number, f: number, msg: string) {
+      function testCalls(
+        a: number,
+        b: number,
+        c: number,
+        d: number,
+        e: number,
+        f: number,
+        msg: string
+      ): void {
         expect([called1, called2, called3, called4, called5, called5]).toEqual([a, b, c, d, e, f]);
-        //   ,
-        //   msg
-        // )
       }
 
       const test = merge(a4, a5, a6);
@@ -657,9 +662,8 @@ describe('atom', () => {
         d: number,
         e: number,
         f: number,
-        // @TODO jest doesn't have messages for expects
-        _msg: string
-      ) {
+        msg: string
+      ): void {
         expect([called1, called2, called3, called4, called5, called5]).toEqual([a, b, c, d, e, f]);
       }
 
@@ -743,7 +747,7 @@ describe('atom', () => {
     });
 
     testDerivedAtom((a, f, onCalled) =>
-      Atom.combine(a, Atom.create(0), (a, b) => {
+      Atom.combine(a, Atom.create(0), (a) => {
         onCalled(a);
         return f(a);
       })

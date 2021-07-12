@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Lens, structEq } from '../lens';
 import { AbstractReadOnlyAtom } from './ImplReadOnlyAtom';
 import { Atom } from './types';
@@ -32,33 +33,41 @@ export abstract class AbstractAtom<T> extends AbstractReadOnlyAtom<T> implements
 }
 
 export class ImplAtom<T> extends AbstractAtom<T> {
-  constructor(initialValue: T) {
+  public constructor(initialValue: T) {
     super(initialValue);
   }
 
-  get() {
+  public get(): T {
     return this.getValue();
   }
 
-  modify(updateFn: (x: T) => T) {
-    const prevValue = this.getValue();
-    const next = updateFn(prevValue);
-
-    if (!structEq(prevValue, next)) this.next(next);
+  public modify(updateFn: (x: T) => T): void {
+    const prev = this.getValue();
+    const next = updateFn(prev);
+    if (!structEq(prev, next)) {
+      this.next(next);
+    }
   }
 
-  set(x: T) {
-    const prevValue = this.getValue();
-
-    if (!structEq(prevValue, x)) this.next(x);
+  public set(next: T): void {
+    const prev = this.getValue();
+    if (!structEq(prev, next)) {
+      this.next(next);
+    }
   }
 }
 
 class LensedAtom<TSource, TDest> extends AbstractAtom<TDest> {
-  constructor(
-    private _source: Atom<TSource>,
-    private _lens: Lens<TSource, TDest>,
-    private _eq: (x: TDest, y: TDest) => boolean = structEq
+  private _subscription: Subscription | null = null;
+  private _refCount: number = 0;
+  private _source: Atom<TSource>;
+  private _lens: Lens<TSource, TDest>;
+  private readonly _eq: (x: TDest, y: TDest) => boolean;
+
+  public constructor(
+    source: Atom<TSource>,
+    lens: Lens<TSource, TDest>,
+    eq: (x: TDest, y: TDest) => boolean = structEq
   ) {
     // @NOTE this is a major hack to optimize for not calling
     // _lens.get the extra time here. This makes the underlying
@@ -69,9 +78,12 @@ class LensedAtom<TSource, TDest> extends AbstractAtom<TDest> {
     // descendant of BehaviorSubject as well), which will emit a
     // value right away, triggering our _onSourceValue.
     super(undefined!);
+    this._source = source;
+    this._lens = lens;
+    this._eq = eq;
   }
 
-  get() {
+  public get(): TDest {
     // Optimization: in case we're already subscribed to the
     // source atom, the BehaviorSubject.getValue will return
     // an up-to-date computed lens value.
@@ -81,26 +93,24 @@ class LensedAtom<TSource, TDest> extends AbstractAtom<TDest> {
     return this._subscription ? this.getValue() : this._lens.get(this._source.get());
   }
 
-  modify(updateFn: (x: TDest) => TDest) {
+  public modify(updateFn: (x: TDest) => TDest): void {
     this._source.modify((x) => this._lens.modify(updateFn, x));
   }
 
-  set(newValue: TDest) {
+  public set(newValue: TDest): void {
     this._source.modify((x) => this._lens.set(newValue, x));
   }
 
-  private _onSourceValue(x: TSource) {
-    const prevValue = this.getValue();
+  private _onSourceValue(x: TSource): void {
+    const prev = this.getValue();
     const next = this._lens.get(x);
-
-    if (!this._eq(prevValue, next)) this.next(next);
+    if (!this._eq(prev, next)) {
+      this.next(next);
+    }
   }
 
-  private _subscription: Subscription | null = null;
-  private _refCount: number = 0;
-
   // Rx method overrides
-  _subscribe(subscriber: Subscriber<TDest>) {
+  private _subscribe(subscriber: Subscriber<TDest>): Subscription {
     // tslint:disable-line function-name
     if (!this._subscription) {
       this._subscription = this._source.subscribe((x) => this._onSourceValue(x));
@@ -119,13 +129,12 @@ class LensedAtom<TSource, TDest> extends AbstractAtom<TDest> {
     return sub;
   }
 
-  unsubscribe() {
+  public unsubscribe(): void {
     if (this._subscription) {
       this._subscription.unsubscribe();
       this._subscription = null;
     }
     this._refCount = 0;
-
     super.unsubscribe();
   }
 }

@@ -7,12 +7,13 @@ import { Lens, Prism } from '../lens';
  *
  * @template T type of atom values
  */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export interface ReadOnlyAtom<T> extends Observable<T> {
   /**
    * Get the current atom value.
    *
    * @example
-   * import { Atom } from '@rixio/atom'
+   * import { Atom } from '@body-link/helpers'
    *
    * const a = Atom.create(5)
    * a.get()
@@ -32,7 +33,7 @@ export interface ReadOnlyAtom<T> extends Observable<T> {
    * read-only atom.
    *
    * @example
-   * import { Atom } from '@rixio/atom'
+   * import { Atom } from '@body-link/helpers'
    *
    * const source = Atom.create(5)
    * const view = source.view()
@@ -53,7 +54,7 @@ export interface ReadOnlyAtom<T> extends Observable<T> {
    * View this atom through a given mapping.
    *
    * @example
-   * import { Atom } from '@rixio/atom'
+   * import { Atom } from '@body-link/helpers'
    *
    * const a = Atom.create(5)
    * const b = a.view(x => x * 2)
@@ -147,6 +148,7 @@ export interface ReadOnlyAtom<T> extends Observable<T> {
  *
  * @template T type of atom values
  */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export interface Atom<T> extends ReadOnlyAtom<T> {
   /**
    * Modify atom value.

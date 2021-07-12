@@ -1,13 +1,20 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { combineLatest, Subscriber, Subscription } from 'rxjs';
 import { ReadOnlyAtom } from './types';
 import { structEq } from '../lens';
 import { AbstractReadOnlyAtom } from './ImplReadOnlyAtom';
 
 export class ImplCombinedAtom<TResult> extends AbstractReadOnlyAtom<TResult> {
-  constructor(
-    private _sources: ReadOnlyAtom<any>[],
-    private _combineFn: (xs: any[]) => TResult,
-    private _eq: (x: TResult, y: TResult) => boolean = structEq
+  private _subscription: Subscription | null = null;
+  private _refCount: number = 0;
+  private _sources: ReadOnlyAtom<any>[];
+  private readonly _combineFn: (xs: any[]) => TResult;
+  private readonly _eq: (x: TResult, y: TResult) => boolean;
+
+  public constructor(
+    sources: ReadOnlyAtom<any>[],
+    combineFn: (xs: any[]) => TResult,
+    eq: (x: TResult, y: TResult) => boolean = structEq
   ) {
     // @NOTE this is a major hack to optimize for not calling
     // _combineFn and .get for each source the extra time here.
@@ -19,9 +26,12 @@ export class ImplCombinedAtom<TResult> extends AbstractReadOnlyAtom<TResult> {
     // descendant of BehaviorSubject as well), which will emit a
     // value right away, triggering our _onSourceValue.
     super(undefined!);
+    this._sources = sources;
+    this._combineFn = combineFn;
+    this._eq = eq;
   }
 
-  get() {
+  public get(): TResult {
     // Optimization: in case we're already subscribed to
     // source atoms, the BehaviorSubject.getValue will return
     // an up-to-date computed view value.
@@ -31,18 +41,16 @@ export class ImplCombinedAtom<TResult> extends AbstractReadOnlyAtom<TResult> {
     return this._subscription ? this.getValue() : this._combineFn(this._sources.map((x) => x.get()));
   }
 
-  private _onSourceValues(xs: any[]) {
-    const prevValue = this.getValue();
+  private _onSourceValues(xs: any[]): void {
+    const prev = this.getValue();
     const next = this._combineFn(xs);
-
-    if (!this._eq(prevValue, next)) this.next(next);
+    if (!this._eq(prev, next)) {
+      this.next(next);
+    }
   }
 
-  private _subscription: Subscription | null = null;
-  private _refCount = 0;
-
   // Rx method overrides
-  _subscribe(subscriber: Subscriber<TResult>) {
+  private _subscribe(subscriber: Subscriber<TResult>): Subscription {
     // tslint:disable-line function-name
     if (!this._subscription) {
       this._subscription = combineLatest(this._sources).subscribe((xs) => this._onSourceValues(xs));
@@ -61,7 +69,7 @@ export class ImplCombinedAtom<TResult> extends AbstractReadOnlyAtom<TResult> {
     return sub;
   }
 
-  unsubscribe() {
+  public unsubscribe(): void {
     if (this._subscription) {
       this._subscription.unsubscribe();
       this._subscription = null;
