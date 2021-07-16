@@ -27,7 +27,7 @@ export interface IFigOptions {
   errorHandlingStrategy: 'pass' | 'complete';
 }
 
-const figDefaultOptions: IFigOptions = {
+const defaultFigOptions: IFigOptions = {
   skipValue: false,
   skipError: false,
   skipProgress: false,
@@ -41,7 +41,7 @@ export const toFig = <T>(
   options?: Partial<IFigOptions>
 ): Observable<IFig<T>> => {
   const { skipValue, skipError, skipProgress, longProgress, errorHandlingStrategy } = {
-    ...figDefaultOptions,
+    ...defaultFigOptions,
     ...options,
   };
 
