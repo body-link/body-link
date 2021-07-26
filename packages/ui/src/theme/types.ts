@@ -1,17 +1,52 @@
+import { CSSProperties } from 'react';
+
 export interface IThemeOptions {
   gridSize: number;
-  colorSets: Record<EThemeColorSetName, IThemeColorSet>;
+  colors: IThemeColors;
+  fonts: IThemeFonts;
 }
 
-export enum EThemeColorSetName {
-  White = 'White',
+export interface IThemeColors {
+  container: IThemeColorsContainer;
+  indicator: IThemeColorsIndicator;
+  interactive: IThemeColorsInteractive;
 }
 
-export interface IThemeColorSet {
+export interface IThemeColorsContainer {
+  bg: string;
+  border: string;
+}
+
+export interface IThemeColorsIndicator {
   base: string;
-  counter: string;
-  text: string;
+  baseMute: string;
 }
+
+export interface IThemeColorsInteractive {
+  base: string;
+  baseRise: string;
+  baseMute: string;
+  bg: string;
+  bgRise: string;
+  text: string;
+  textRise: string;
+  textMute: string;
+  error: string;
+  errorMute: string;
+  invite: string;
+}
+
+export enum EThemeFont {
+  BodyLine = 'BodyLine',
+  BodyShort = 'BodyShort',
+  BodyLong = 'BodyLong',
+  Label = 'Label',
+  Caption = 'Caption',
+  Heading1 = 'Heading1',
+  Heading2 = 'Heading2',
+}
+
+export interface IThemeFonts extends Record<EThemeFont, CSSProperties> {}
 
 export type TGridCoefficient = number;
 export type TSpace = string | TGridCoefficient;

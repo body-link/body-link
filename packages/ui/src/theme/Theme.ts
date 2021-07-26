@@ -1,24 +1,37 @@
+import { CSSProperties } from 'react';
 import { isArray, isText } from '@body-link/type-guards';
-import { EThemeColorSetName, IThemeColorSet, IThemeOptions, TSpace, TSpaceValue } from './types';
+import {
+  EThemeFont,
+  IThemeColors,
+  IThemeFonts,
+  IThemeOptions,
+  TGridCoefficient,
+  TSpace,
+  TSpaceValue,
+} from './types';
 
 export class Theme {
-  public options: Readonly<IThemeOptions>;
-  public defaultColorSet: IThemeColorSet;
-
-  private readonly _colorSets: Record<EThemeColorSetName, IThemeColorSet>;
+  public readonly options: Readonly<IThemeOptions>;
+  public readonly gridSize: number;
+  public readonly fonts: IThemeFonts;
+  public readonly colors: IThemeColors;
 
   public constructor(options: IThemeOptions) {
     this.options = options;
-    this._colorSets = this.options.colorSets;
-    this.defaultColorSet = this.getColorSet(EThemeColorSetName.White);
+    this.gridSize = options.gridSize;
+    this.fonts = options.fonts;
+    this.colors = options.colors;
   }
 
   public px = (value: number): string => `${value}px`;
 
-  public getColorSet = (colorSetName: EThemeColorSetName): IThemeColorSet => this._colorSets[colorSetName];
+  public getFont = (fontName: EThemeFont): CSSProperties => this.fonts[fontName];
+
+  public gridCoefficientToNumber = (gridCoefficient: TGridCoefficient): number =>
+    Math.round(this.gridSize * gridCoefficient);
 
   public spaceToCSSValue = (space: TSpace): string =>
-    isText(space) ? space : this.px(Math.round(this.options.gridSize * space));
+    isText(space) ? space : this.px(this.gridCoefficientToNumber(space));
 
   public spaceValueToCSSValue = (spaceValue: TSpaceValue): string =>
     isArray(spaceValue) ? spaceValue.map(this.spaceToCSSValue).join(' ') : this.spaceToCSSValue(spaceValue);

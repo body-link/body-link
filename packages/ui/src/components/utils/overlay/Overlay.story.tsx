@@ -5,7 +5,6 @@ import { Stack } from '../../layout/Stack/Stack';
 import { IOverlayOptions } from './types';
 import { Overlay } from './Overlay';
 import { OverlayArrow } from './OverlayArrow';
-import { EThemeColorSetName } from '../../../theme';
 
 export default {
   title: 'Utils/Overlay',
@@ -89,9 +88,7 @@ export const Basic: Story<IProps> = ({
             <div>Date.now()</div>
             <div>{Date.now()}</div>
           </Stack>
-          {hasArrow && (
-            <OverlayArrow size={16} colorSetName={EThemeColorSetName.White} ref={overlay.refArrow} />
-          )}
+          {hasArrow && <OverlayArrow size={16} ref={overlay.refArrow} />}
         </div>
       ),
       refDock,

@@ -1,31 +1,29 @@
 import React from 'react';
 import { cx } from '@emotion/css';
-import { EThemeColorSetName, makeStyles } from '../../../theme';
+import { makeStyles } from '../../../theme';
 
 interface IPropsStyle {
-  size: number;
-  colorSetName: EThemeColorSetName;
+  size?: number;
 }
 
 export interface IPropsOverlayArrow extends React.HTMLAttributes<HTMLDivElement>, IPropsStyle {}
 
 // eslint-disable-next-line @rushstack/typedef-var
-const useStyles = makeStyles<IPropsStyle>((theme, { size, colorSetName }) => {
+const useStyles = makeStyles<IPropsStyle>((theme, { size = theme.gridCoefficientToNumber(2) }) => {
   const comp = (size / 2) * -1;
-  const colorSet = theme.getColorSet(colorSetName);
   return {
     root: {
       'position': 'relative',
       'width': size,
       'height': size,
       'pointerEvents': 'none',
-      'backgroundColor': colorSet.counter,
+      'backgroundColor': theme.colors.container.border,
       '&::before': {
         width: size,
         height: size,
         position: 'absolute',
         content: '""',
-        backgroundColor: colorSet.base,
+        backgroundColor: theme.colors.container.bg,
       },
       "[data-popper-placement^='top'] > &": {
         'bottom': comp,
@@ -61,7 +59,7 @@ const useStyles = makeStyles<IPropsStyle>((theme, { size, colorSetName }) => {
 
 // eslint-disable-next-line @rushstack/typedef-var
 export const OverlayArrow = React.forwardRef<HTMLDivElement, IPropsOverlayArrow>(
-  ({ size, colorSetName, className, ...rest }, ref) => {
-    return <div {...rest} ref={ref} className={cx(useStyles({ size, colorSetName }).root, className)} />;
+  ({ size, className, ...rest }, ref) => {
+    return <div {...rest} ref={ref} className={cx(useStyles({ size }).root, className)} />;
   }
 );

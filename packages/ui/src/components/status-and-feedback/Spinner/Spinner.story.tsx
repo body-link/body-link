@@ -1,17 +1,14 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { Box } from '../Box/Box';
+import { Box } from '../../layout/Box/Box';
 import { Spinner, IPropsSpinner } from './Spinner';
 
 export default {
-  title: 'Layout/Spinner',
+  title: 'Status & Feedback/Spinner',
   component: Spinner,
   argTypes: {
     color: { control: { type: 'color' } },
-  },
-  args: {
-    color: '#000',
-    size: 4,
+    size: { control: { type: 'number' } },
   },
 } as Meta;
 

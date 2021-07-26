@@ -1,10 +1,10 @@
 import React from 'react';
 import { cx, keyframes } from '@emotion/css';
-import { makeStyles } from '../../../theme';
+import { makeStyles, TSpace } from '../../../theme';
 
 interface IStyleProps {
   color?: string;
-  size?: number;
+  size?: TSpace;
 }
 
 export interface IPropsSpinner extends React.HTMLAttributes<HTMLDivElement>, IStyleProps {}
@@ -38,7 +38,7 @@ const useStyles = makeStyles<IStyleProps>((theme, { color, size }) => {
     root: {
       width: pxSize,
       height: pxSize,
-      backgroundColor: color ?? theme.defaultColorSet.counter,
+      backgroundColor: color ?? theme.colors.indicator.base,
       borderRadius: '50%',
       animation: `${flip} 1s infinite linear`,
     },
