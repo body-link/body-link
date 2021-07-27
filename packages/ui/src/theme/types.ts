@@ -15,6 +15,7 @@ export interface IThemeColors {
 export interface IThemeColorsContainer {
   bg: string;
   border: string;
+  text: string;
 }
 
 export interface IThemeColorsIndicator {
