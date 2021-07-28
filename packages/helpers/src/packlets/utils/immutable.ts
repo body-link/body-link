@@ -34,3 +34,12 @@ export const removeUndefined = <T extends Record<string, any>>(v: T, recursive =
     return acc;
   }, {} as T);
 };
+
+export function sortAlphabetically(arr: string[]): string[];
+export function sortAlphabetically<T>(arr: T[], selector: (item: T) => string): T[];
+export function sortAlphabetically<T>(
+  arr: T[],
+  selector: (item: T) => string = (item) => item as unknown as string
+): T[] {
+  return [...arr].sort((a, b) => selector(a).localeCompare(selector(b), 'en', { sensitivity: 'base' }));
+}
