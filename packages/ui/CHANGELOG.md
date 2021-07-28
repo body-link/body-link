@@ -1,6 +1,16 @@
 # Change Log - @body-link/ui
 
-This log was last generated on Tue, 06 Jul 2021 06:36:20 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Jul 2021 15:38:00 GMT and should not be manually modified.
+
+## 1.2.0
+Wed, 28 Jul 2021 15:38:00 GMT
+
+### Minor changes
+
+- Implement Input component
+- Implement Button component
+- Implement Text component
+- Add new UI icons
 
 ## 1.1.3
 Tue, 06 Jul 2021 06:36:20 GMT

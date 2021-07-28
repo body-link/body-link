@@ -2,6 +2,41 @@
   "name": "@body-link/helpers",
   "entries": [
     {
+      "version": "1.5.0",
+      "tag": "@body-link/helpers_v1.5.0",
+      "date": "Wed, 28 Jul 2021 15:38:00 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix eslint warnings"
+          },
+          {
+            "comment": "Optimize atomValueProjection"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Implement immutable sortAlphabetically"
+          },
+          {
+            "comment": "Implement mergeFunctionsInObjects"
+          },
+          {
+            "comment": "Implement AtomField"
+          },
+          {
+            "comment": "Implement AtomCache"
+          },
+          {
+            "comment": "Implement atomFigProjection"
+          },
+          {
+            "comment": "Implement IFig and helpers"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.4.2",
       "tag": "@body-link/helpers_v1.4.2",
       "date": "Tue, 06 Jul 2021 06:36:20 GMT",

@@ -1,6 +1,23 @@
 # Change Log - @body-link/helpers
 
-This log was last generated on Tue, 06 Jul 2021 06:36:20 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Jul 2021 15:38:00 GMT and should not be manually modified.
+
+## 1.5.0
+Wed, 28 Jul 2021 15:38:00 GMT
+
+### Minor changes
+
+- Implement immutable sortAlphabetically
+- Implement mergeFunctionsInObjects
+- Implement AtomField
+- Implement AtomCache
+- Implement atomFigProjection
+- Implement IFig and helpers
+
+### Patches
+
+- Fix eslint warnings
+- Optimize atomValueProjection
 
 ## 1.4.2
 Tue, 06 Jul 2021 06:36:20 GMT
