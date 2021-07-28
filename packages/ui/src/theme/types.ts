@@ -7,9 +7,27 @@ export interface IThemeOptions {
 }
 
 export interface IThemeColors {
+  button: IThemeColorsButton;
   container: IThemeColorsContainer;
   indicator: IThemeColorsIndicator;
   interactive: IThemeColorsInteractive;
+}
+
+export interface IThemeColorsButton {
+  primary: string;
+  primaryText: string;
+  primaryHover: string;
+  secondary: string;
+  secondaryText: string;
+  secondaryHover: string;
+  danger: string;
+  dangerText: string;
+  dangerHover: string;
+  subtleHover: string;
+  disabled1: string;
+  disabled2: string;
+  disabled3: string;
+  disabled4: string;
 }
 
 export interface IThemeColorsContainer {

@@ -1,8 +1,8 @@
 import { css, CSSObject } from '@emotion/css';
 import memoizeOne, { EqualityFn } from 'memoize-one';
+import { isObjectShallowEqual } from '@body-link/helpers';
 import { Theme } from './Theme';
 import { useTheme } from './ThemeProvider';
-import { isObjectShallowEqual } from '@body-link/helpers';
 
 const isEqual = (
   [nextTheme, nextProps]: [Theme, unknown],
@@ -17,7 +17,8 @@ const isEqual = (
 export function makeStyles<Classes extends string>(
   styleCreator: (theme: Theme) => Record<Classes, CSSObject>
 ): () => Record<Classes, string>;
-export function makeStyles<Props, Classes extends string = 'root'>(
+// eslint-disable-next-line @typescript-eslint/ban-types
+export function makeStyles<Props extends {}, Classes extends string = 'root'>(
   styleCreator: (theme: Theme, props: Props) => Record<Classes, CSSObject>
 ): (props: Props) => Record<Classes, string>;
 export function makeStyles<Props, Classes extends string>(

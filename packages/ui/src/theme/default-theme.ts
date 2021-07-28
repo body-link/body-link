@@ -131,6 +131,22 @@ const PRIMITIVE_FONT_WEIGHTS = {
 export const defaultThemeOptions: IThemeOptions = {
   gridSize: 8,
   colors: {
+    button: {
+      primary: PRIMITIVE_COLORS.Blue60,
+      primaryText: PRIMITIVE_COLORS.White,
+      primaryHover: PRIMITIVE_COLORS.Blue70,
+      secondary: PRIMITIVE_COLORS.WarmGray80,
+      secondaryText: PRIMITIVE_COLORS.White,
+      secondaryHover: PRIMITIVE_COLORS.WarmGray70,
+      danger: PRIMITIVE_COLORS.Red60,
+      dangerText: PRIMITIVE_COLORS.White,
+      dangerHover: PRIMITIVE_COLORS.Red70,
+      subtleHover: PRIMITIVE_COLORS.WarmGray20,
+      disabled1: PRIMITIVE_COLORS.Gray30,
+      disabled2: PRIMITIVE_COLORS.Gray40,
+      disabled3: PRIMITIVE_COLORS.Gray50,
+      disabled4: PRIMITIVE_COLORS.Gray60,
+    },
     container: {
       bg: PRIMITIVE_COLORS.White,
       border: PRIMITIVE_COLORS.WarmGray80,

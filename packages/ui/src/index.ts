@@ -1,7 +1,11 @@
 export * from './theme';
 
+export * from './components/actions-and-inputs/Button/Button';
 export * from './components/actions-and-inputs/Input/Input';
 export * from './components/actions-and-inputs/InputContainer/InputContainer';
+export * from './components/actions-and-inputs/InputContainer/InputContainerItem';
+export * from './components/actions-and-inputs/InputContainer/InputContainerInput';
+export * from './components/actions-and-inputs/InputContainer/InputContainerButtonIcon';
 export * from './components/actions-and-inputs/InputTransparent/InputTransparent';
 export * from './components/actions-and-inputs/ButtonTransparent/ButtonTransparent';
 

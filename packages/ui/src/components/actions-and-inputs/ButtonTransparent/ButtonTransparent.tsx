@@ -3,12 +3,13 @@ import { cx } from '@emotion/css';
 import { makeStyles } from '../../../theme';
 
 export interface IPropsButtonTransparent extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  isFit?: boolean;
   isDisabled?: boolean;
   ref?: React.Ref<HTMLButtonElement>;
 }
 
 // eslint-disable-next-line @rushstack/typedef-var
-const useStyles = makeStyles((theme) => {
+const useStyles = makeStyles<'root' | 'fit'>((theme) => {
   return {
     root: {
       'all': 'initial',
@@ -18,14 +19,15 @@ const useStyles = makeStyles((theme) => {
       'minWidth': theme.spaceToCSSValue(3),
       'position': 'relative',
       'display': 'flex',
-      'justifyContent': 'center',
       'alignItems': 'center',
+      'justifyContent': 'center',
       'boxSizing': 'border-box',
       'border': 0,
       'outline': 0,
       'backgroundColor': 'transparent',
       'color': theme.colors.interactive.text,
       'whiteSpace': 'nowrap',
+      'overflow': 'hidden',
       'userSelect': 'none',
       'cursor': 'pointer',
       '&:disabled': {
@@ -33,20 +35,25 @@ const useStyles = makeStyles((theme) => {
         cursor: 'not-allowed',
       },
     },
+    fit: {
+      flex: '0 0 auto',
+      width: 'auto',
+    },
   };
 });
 
 export const ButtonTransparent: React.FC<IPropsButtonTransparent> = React.forwardRef<
   HTMLButtonElement,
   IPropsButtonTransparent
->(({ isDisabled = false, className, ...rest }, ref) => {
+>(({ isDisabled = false, isFit = false, className, ...rest }, ref) => {
+  const classes = useStyles();
   return (
     <button
       type="button"
       {...rest}
       ref={ref}
       disabled={isDisabled}
-      className={cx(useStyles().root, className)}
+      className={cx(classes.root, isFit && classes.fit, className)}
     />
   );
 });
