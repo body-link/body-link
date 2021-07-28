@@ -45,4 +45,5 @@ Optional.args = {
   }),
   isOptional: true,
   hasClearButton: true,
+  placeholder: 'Start typing',
 };

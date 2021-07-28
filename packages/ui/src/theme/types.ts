@@ -17,17 +17,23 @@ export interface IThemeColorsButton {
   primary: string;
   primaryText: string;
   primaryHover: string;
+  primaryDimmer: string;
   secondary: string;
   secondaryText: string;
   secondaryHover: string;
+  secondaryDimmer: string;
+  tertiaryDimmer: string;
   danger: string;
   dangerText: string;
   dangerHover: string;
+  dangerDimmer: string;
   subtleHover: string;
+  subtleDimmer: string;
   disabled1: string;
   disabled2: string;
   disabled3: string;
   disabled4: string;
+  disabledDimmer: string;
 }
 
 export interface IThemeColorsContainer {

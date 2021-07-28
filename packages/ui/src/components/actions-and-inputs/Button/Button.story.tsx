@@ -44,6 +44,14 @@ const Basic: Story<IPropsButton> = (props) => {
         </Button>
         <Button {...props} isDisabled icon={<IconPlus />} />
       </Stack>
+      <Stack isInline spacing={4}>
+        <Button {...props} isLoading icon={<IconPlus />}>
+          Button isLoading
+        </Button>
+        <Button {...props} isLoading isDisabled icon={<IconPlus />}>
+          Button isLoading isDisabled
+        </Button>
+      </Stack>
     </Stack>
   );
 };

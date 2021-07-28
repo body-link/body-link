@@ -102,7 +102,7 @@ export const Input: React.FC<IPropsInput> = React.memo<IPropsInput>(
           )}
           {isLoading && (
             <InputContainerItem>
-              <Spinner size={2} />
+              <Spinner />
             </InputContainerItem>
           )}
           {rightSide}

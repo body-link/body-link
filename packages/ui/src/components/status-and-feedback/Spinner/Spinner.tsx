@@ -31,9 +31,11 @@ const flip: string = keyframes({
   },
 });
 
+const defaultSize: TSpace = 2;
+
 // eslint-disable-next-line @rushstack/typedef-var
-const useStyles = makeStyles<IStyleProps>((theme, { color, size }) => {
-  const pxSize = theme.spaceToCSSValue(size ?? 3);
+const useStyles = makeStyles<IStyleProps>((theme, { color, size = defaultSize }) => {
+  const pxSize = theme.spaceToCSSValue(size);
   return {
     root: {
       width: pxSize,
@@ -47,7 +49,7 @@ const useStyles = makeStyles<IStyleProps>((theme, { color, size }) => {
 
 // eslint-disable-next-line @rushstack/typedef-var
 export const Spinner = React.forwardRef<HTMLDivElement, IPropsSpinner>(
-  ({ color, size, className, ...rest }, ref) => {
+  ({ color, size = defaultSize, className, ...rest }, ref) => {
     return <div {...rest} ref={ref} className={cx(useStyles({ color, size }).root, className)} />;
   }
 );

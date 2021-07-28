@@ -113,6 +113,13 @@ const PRIMITIVE_COLORS = {
 };
 
 // eslint-disable-next-line @rushstack/typedef-var
+const PRIMITIVE_TRANSPARENT_COLORS = {
+  Light20: 'rgba(255, 255, 255, .2)',
+  Light60: 'rgba(255, 255, 255, .6)',
+  Light70: 'rgba(255, 255, 255, .7)',
+};
+
+// eslint-disable-next-line @rushstack/typedef-var
 const PRIMITIVE_FONT_FAMILIES = {
   mono: "'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace",
   sans: "'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif",
@@ -135,17 +142,23 @@ export const defaultThemeOptions: IThemeOptions = {
       primary: PRIMITIVE_COLORS.Blue60,
       primaryText: PRIMITIVE_COLORS.White,
       primaryHover: PRIMITIVE_COLORS.Blue70,
+      primaryDimmer: PRIMITIVE_TRANSPARENT_COLORS.Light60,
       secondary: PRIMITIVE_COLORS.WarmGray80,
       secondaryText: PRIMITIVE_COLORS.White,
       secondaryHover: PRIMITIVE_COLORS.WarmGray70,
+      secondaryDimmer: PRIMITIVE_TRANSPARENT_COLORS.Light70,
+      tertiaryDimmer: PRIMITIVE_TRANSPARENT_COLORS.Light60,
       danger: PRIMITIVE_COLORS.Red60,
       dangerText: PRIMITIVE_COLORS.White,
       dangerHover: PRIMITIVE_COLORS.Red70,
+      dangerDimmer: PRIMITIVE_TRANSPARENT_COLORS.Light60,
       subtleHover: PRIMITIVE_COLORS.WarmGray20,
+      subtleDimmer: PRIMITIVE_TRANSPARENT_COLORS.Light60,
       disabled1: PRIMITIVE_COLORS.Gray30,
       disabled2: PRIMITIVE_COLORS.Gray40,
       disabled3: PRIMITIVE_COLORS.Gray50,
       disabled4: PRIMITIVE_COLORS.Gray60,
+      disabledDimmer: PRIMITIVE_TRANSPARENT_COLORS.Light20,
     },
     container: {
       bg: PRIMITIVE_COLORS.White,
