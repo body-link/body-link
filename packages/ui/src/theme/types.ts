@@ -1,4 +1,4 @@
-import { CSSProperties } from 'react';
+import { CSSObject } from '@emotion/css';
 
 export interface IThemeOptions {
   gridSize: number;
@@ -80,9 +80,11 @@ export enum EThemeFont {
   Caption = 'Caption',
   Heading1 = 'Heading1',
   Heading2 = 'Heading2',
+  Code1 = 'Code1',
+  Code2 = 'Code2',
 }
 
-export interface IThemeFonts extends Record<EThemeFont, CSSProperties> {}
+export interface IThemeFonts extends Record<EThemeFont, CSSObject> {}
 
 export type TGridCoefficient = number;
 export type TSpace = string | TGridCoefficient;

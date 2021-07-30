@@ -23,6 +23,8 @@ const variants: Record<EThemeFont, string> = {
     'This is for explanatory helper text that appears below a field title within a component.',
   [EThemeFont.Heading1]: 'This is for component and layout headings',
   [EThemeFont.Heading2]: 'This is for component and layout headings',
+  [EThemeFont.Code1]: '<div>Hello 407 ;-)</div>',
+  [EThemeFont.Code2]: '<div>Hello 407 ;-)</div>',
 };
 
 export const AllVariants: Story<IPropsText> = (props) => {

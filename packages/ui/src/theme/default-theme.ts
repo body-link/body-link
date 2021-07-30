@@ -1,3 +1,4 @@
+import { CSSObject } from '@emotion/css';
 import { createTheme, Theme } from './Theme';
 import { EThemeFont, IThemeOptions } from './types';
 
@@ -140,6 +141,12 @@ const PRIMITIVE_FONT_WEIGHTS = {
 
 const GRID_SIZE: number = 8;
 
+const fontBase: CSSObject = {
+  'textRendering': 'optimizeLegibility',
+  '-webkit-font-smoothing': 'antialiased',
+  '-moz-osx-font-smoothing': 'grayscale',
+};
+
 export const defaultThemeOptions: IThemeOptions = {
   gridSize: GRID_SIZE,
   colors: {
@@ -196,6 +203,7 @@ export const defaultThemeOptions: IThemeOptions = {
   },
   fonts: {
     [EThemeFont.BodyLine]: {
+      ...fontBase,
       fontFamily: PRIMITIVE_FONT_FAMILIES.sans,
       fontWeight: PRIMITIVE_FONT_WEIGHTS.regular,
       fontStyle: 'normal',
@@ -204,6 +212,7 @@ export const defaultThemeOptions: IThemeOptions = {
       letterSpacing: '0.16px',
     },
     [EThemeFont.BodyShort]: {
+      ...fontBase,
       fontFamily: PRIMITIVE_FONT_FAMILIES.sans,
       fontWeight: PRIMITIVE_FONT_WEIGHTS.regular,
       fontStyle: 'normal',
@@ -212,6 +221,7 @@ export const defaultThemeOptions: IThemeOptions = {
       letterSpacing: '0.16px',
     },
     [EThemeFont.BodyLong]: {
+      ...fontBase,
       fontFamily: PRIMITIVE_FONT_FAMILIES.sans,
       fontWeight: PRIMITIVE_FONT_WEIGHTS.regular,
       fontStyle: 'normal',
@@ -220,6 +230,7 @@ export const defaultThemeOptions: IThemeOptions = {
       letterSpacing: '0.16px',
     },
     [EThemeFont.Label]: {
+      ...fontBase,
       fontFamily: PRIMITIVE_FONT_FAMILIES.sans,
       fontWeight: PRIMITIVE_FONT_WEIGHTS.medium,
       fontStyle: 'normal',
@@ -228,6 +239,7 @@ export const defaultThemeOptions: IThemeOptions = {
       letterSpacing: '0.32px',
     },
     [EThemeFont.Caption]: {
+      ...fontBase,
       fontFamily: PRIMITIVE_FONT_FAMILIES.sans,
       fontWeight: PRIMITIVE_FONT_WEIGHTS.regular,
       fontStyle: 'normal',
@@ -236,6 +248,7 @@ export const defaultThemeOptions: IThemeOptions = {
       letterSpacing: '0.32px',
     },
     [EThemeFont.Heading1]: {
+      ...fontBase,
       fontFamily: PRIMITIVE_FONT_FAMILIES.sans,
       fontWeight: PRIMITIVE_FONT_WEIGHTS.semiBold,
       fontStyle: 'normal',
@@ -244,12 +257,31 @@ export const defaultThemeOptions: IThemeOptions = {
       letterSpacing: '0.16px',
     },
     [EThemeFont.Heading2]: {
+      ...fontBase,
       fontFamily: PRIMITIVE_FONT_FAMILIES.sans,
       fontWeight: PRIMITIVE_FONT_WEIGHTS.semiBold,
       fontStyle: 'normal',
       fontSize: '16px',
       lineHeight: '22px',
       letterSpacing: 0,
+    },
+    [EThemeFont.Code1]: {
+      ...fontBase,
+      fontFamily: PRIMITIVE_FONT_FAMILIES.mono,
+      fontWeight: PRIMITIVE_FONT_WEIGHTS.regular,
+      fontStyle: 'normal',
+      fontSize: '12px',
+      lineHeight: '16px',
+      letterSpacing: '0.32px',
+    },
+    [EThemeFont.Code2]: {
+      ...fontBase,
+      fontFamily: PRIMITIVE_FONT_FAMILIES.mono,
+      fontWeight: PRIMITIVE_FONT_WEIGHTS.regular,
+      fontStyle: 'normal',
+      fontSize: '14px',
+      lineHeight: '20px',
+      letterSpacing: '0.32px',
     },
   },
   shadows: {
