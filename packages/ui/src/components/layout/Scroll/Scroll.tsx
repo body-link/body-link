@@ -1,9 +1,9 @@
 import React from 'react';
 import { CSSObject, cx } from '@emotion/css';
-import { IPropsStack, Stack } from '../Stack/Stack';
 import { makeStyles } from '../../../theme';
+import { IPropsContainer, Container } from '../Container/Container';
 
-export interface IPropsScroll extends IPropsStack {
+export interface IPropsScroll extends IPropsContainer {
   isHorizontal?: boolean;
   isVertical?: boolean;
 }
@@ -60,7 +60,7 @@ export const Scroll = React.forwardRef<HTMLDivElement, IPropsScroll>(
   ({ isHorizontal = false, isVertical = false, className, ...rest }, ref) => {
     const classes = useStyles();
     return (
-      <Stack
+      <Container
         {...rest}
         ref={ref}
         className={cx(

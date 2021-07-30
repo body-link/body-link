@@ -10,13 +10,16 @@ export default {
     m: 6,
     hMax: 50,
     wMax: 40,
+    hasBorder: true,
+    isHoverable: true,
+    isElevated: true,
     isVertical: true,
   },
 } as Meta;
 
 export const Basic: Story<IPropsScroll> = (props) => {
   return (
-    <Scroll style={{ backgroundColor: '#f0f0f0' }} {...props}>
+    <Scroll {...props}>
       <h1 style={{ whiteSpace: props.isHorizontal ? 'nowrap' : undefined }}>
         Q. Is the foundational moral principle sensed only by believers?
       </h1>
