@@ -18,6 +18,13 @@ import { IconCheckbox } from './IconCheckbox';
 import { IconCheckboxChecked } from './IconCheckboxChecked';
 import { IconCheckboxIndeterminate } from './IconCheckboxIndeterminate';
 import { IconSuccess } from './IconSuccess';
+import { IconExternal } from './IconExternal';
+import { IconMaximize } from './IconMaximize';
+import { IconMinimize } from './IconMinimize';
+import { IconSortASC } from './IconSortASC';
+import { IconSortDESC } from './IconSortDESC';
+import { IconMore } from './IconMore';
+import { IconArrow } from './IconArrow';
 
 export default {
   title: 'Icons',
@@ -34,6 +41,13 @@ export default {
 } as Meta;
 
 const icons: React.FC<IPropsIcon>[] = [
+  IconArrow,
+  IconMore,
+  IconSortDESC,
+  IconSortASC,
+  IconMinimize,
+  IconMaximize,
+  IconExternal,
   IconSuccess,
   IconCheckbox,
   IconCheckboxChecked,

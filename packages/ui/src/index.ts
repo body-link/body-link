@@ -22,6 +22,13 @@ export * from './components/status-and-feedback/Spinner/Spinner';
 export * from './components/utils/events';
 export * from './components/utils/overlay';
 
+export * from './components/icons/IconArrow';
+export * from './components/icons/IconMore';
+export * from './components/icons/IconSortDESC';
+export * from './components/icons/IconSortASC';
+export * from './components/icons/IconMinimize';
+export * from './components/icons/IconMaximize';
+export * from './components/icons/IconExternal';
 export * from './components/icons/IconSuccess';
 export * from './components/icons/IconCheckbox';
 export * from './components/icons/IconCheckboxChecked';
