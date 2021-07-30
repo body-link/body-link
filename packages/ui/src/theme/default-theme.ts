@@ -1,9 +1,9 @@
 import { createTheme, Theme } from './Theme';
 import { EThemeFont, IThemeOptions } from './types';
 
-// From IBM Carbon Design System
 // eslint-disable-next-line @rushstack/typedef-var
 const PRIMITIVE_COLORS = {
+  // From IBM Carbon Design System
   Alert20: 'rgba(241, 194, 27, 1)',
   Alert40: 'rgba(255, 131, 43, 1)',
   Alert50: 'rgba(36, 161, 72, 1)',
@@ -110,6 +110,9 @@ const PRIMITIVE_COLORS = {
   WarmGray80: 'rgba(60, 56, 56, 1)',
   WarmGray90: 'rgba(39, 37, 37, 1)',
   White: 'rgba(255, 255, 255, 1)',
+
+  // BL extension
+  Blue15: '#DFECFF',
 };
 
 // eslint-disable-next-line @rushstack/typedef-var
@@ -135,8 +138,10 @@ const PRIMITIVE_FONT_WEIGHTS = {
   semiBold: 600,
 };
 
+const GRID_SIZE: number = 8;
+
 export const defaultThemeOptions: IThemeOptions = {
-  gridSize: 8,
+  gridSize: GRID_SIZE,
   colors: {
     button: {
       primary: PRIMITIVE_COLORS.Blue60,
@@ -161,9 +166,15 @@ export const defaultThemeOptions: IThemeOptions = {
       disabledDimmer: PRIMITIVE_TRANSPARENT_COLORS.Light20,
     },
     container: {
-      bg: PRIMITIVE_COLORS.White,
-      border: PRIMITIVE_COLORS.WarmGray80,
-      text: PRIMITIVE_COLORS.Black,
+      base: PRIMITIVE_COLORS.WarmGray80,
+      solid: PRIMITIVE_COLORS.White,
+      solidText: PRIMITIVE_COLORS.Black,
+      dimmed: PRIMITIVE_COLORS.WarmGray10,
+      dimmedText: PRIMITIVE_COLORS.Black,
+      highlighted: PRIMITIVE_COLORS.WarmGray20,
+      highlightedText: PRIMITIVE_COLORS.Black,
+      hoverable: PRIMITIVE_COLORS.Blue15,
+      hoverableText: PRIMITIVE_COLORS.Black,
     },
     indicator: {
       base: PRIMITIVE_COLORS.Blue60,
@@ -240,6 +251,9 @@ export const defaultThemeOptions: IThemeOptions = {
       lineHeight: '22px',
       letterSpacing: 0,
     },
+  },
+  shadows: {
+    overlay: `0px ${GRID_SIZE * 2}px ${GRID_SIZE * 7.75}px rgba(0, 0, 0, 0.15)`,
   },
 };
 

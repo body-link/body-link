@@ -31,6 +31,7 @@ export interface IPropsBox extends React.HTMLAttributes<HTMLDivElement>, ISpacin
 const useStyles = makeStyles<ISpacing & ISizing>((theme, props) => {
   return {
     root: {
+      flexGrow: 1,
       boxSizing: 'border-box',
       width: optionalCall(theme.spaceToCSSValue, props.w),
       minWidth: optionalCall(theme.spaceToCSSValue, props.wMin),

@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="packages w/o lib" pattern="file[tachka]:packages//*&amp;&amp;!file[tachka]:packages/*/lib//*" />
+</component>

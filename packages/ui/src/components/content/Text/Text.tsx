@@ -11,11 +11,10 @@ interface IProps {
 export interface IPropsText extends IPropsBox, IProps {}
 
 // eslint-disable-next-line @rushstack/typedef-var
-const useStyles = makeStyles<IProps>((theme, { variant, color = theme.colors.container.text }) => {
+const useStyles = makeStyles<IProps>((theme, { variant, color = 'inherit' }) => {
   return {
     root: {
       ...theme.fonts[variant],
-      flexGrow: 1,
       color,
     },
   };

@@ -17,13 +17,13 @@ const useStyles = makeStyles<IPropsStyle>((theme, { size = theme.gridCoefficient
       'width': size,
       'height': size,
       'pointerEvents': 'none',
-      'backgroundColor': theme.colors.container.border,
+      'backgroundColor': theme.colors.container.base,
       '&::before': {
         width: size,
         height: size,
         position: 'absolute',
         content: '""',
-        backgroundColor: theme.colors.container.bg,
+        backgroundColor: theme.colors.container.solid,
       },
       "[data-popper-placement^='top'] > &": {
         'bottom': comp,

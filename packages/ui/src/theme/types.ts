@@ -4,6 +4,11 @@ export interface IThemeOptions {
   gridSize: number;
   colors: IThemeColors;
   fonts: IThemeFonts;
+  shadows: IThemeShadows;
+}
+
+export interface IThemeShadows {
+  overlay: string;
 }
 
 export interface IThemeColors {
@@ -37,9 +42,15 @@ export interface IThemeColorsButton {
 }
 
 export interface IThemeColorsContainer {
-  bg: string;
-  border: string;
-  text: string;
+  base: string;
+  solid: string;
+  solidText: string;
+  dimmed: string;
+  dimmedText: string;
+  highlighted: string;
+  highlightedText: string;
+  hoverable: string;
+  hoverableText: string;
 }
 
 export interface IThemeColorsIndicator {

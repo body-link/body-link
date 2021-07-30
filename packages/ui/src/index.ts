@@ -15,6 +15,7 @@ export * from './components/content/Text/Text';
 
 export * from './components/layout/Box/Box';
 export * from './components/layout/Stack/Stack';
+export * from './components/layout/Container/Container';
 
 export * from './components/status-and-feedback/Spinner/Spinner';
 

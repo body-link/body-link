@@ -16,7 +16,6 @@ const useStyles = makeStyles<IProps>((theme, { isInvalid, isReadOnly }) => {
     root: {
       'position': 'relative',
       'overflow': 'hidden',
-      'flexGrow': 1,
       'display': 'flex',
       'minHeight': theme.spaceToCSSValue(4),
       'boxShadow': `inset 0 0 0 ${theme.px(isReadOnly || isInvalid ? 2 : 1)} ${

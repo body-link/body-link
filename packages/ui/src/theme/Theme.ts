@@ -5,6 +5,7 @@ import {
   IThemeColors,
   IThemeFonts,
   IThemeOptions,
+  IThemeShadows,
   TGridCoefficient,
   TSpace,
   TSpaceValue,
@@ -15,12 +16,14 @@ export class Theme {
   public readonly gridSize: number;
   public readonly fonts: IThemeFonts;
   public readonly colors: IThemeColors;
+  public readonly shadows: IThemeShadows;
 
   public constructor(options: IThemeOptions) {
     this.options = options;
     this.gridSize = options.gridSize;
     this.fonts = options.fonts;
     this.colors = options.colors;
+    this.shadows = options.shadows;
   }
 
   public px = (value: number): string => `${value}px`;

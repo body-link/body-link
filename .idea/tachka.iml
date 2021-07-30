@@ -5,6 +5,21 @@
       <excludeFolder url="file://$MODULE_DIR$/temp" />
       <excludeFolder url="file://$MODULE_DIR$/.tmp" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/helpers/.heft" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/helpers/.rush" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/helpers/temp" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/schemas/.heft" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/schemas/.rush" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/schemas/temp" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/type-guards/.heft" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/type-guards/.rush" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/type-guards/temp" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/ui/.heft" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/ui/.rush" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/ui/temp" />
+      <excludeFolder url="file://$MODULE_DIR$/platform/eslint-config/.rush" />
+      <excludeFolder url="file://$MODULE_DIR$/platform/prettier-config/.rush" />
+      <excludeFolder url="file://$MODULE_DIR$/common/temp" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
