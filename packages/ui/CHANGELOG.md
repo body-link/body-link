@@ -1,6 +1,13 @@
 # Change Log - @body-link/ui
 
-This log was last generated on Fri, 30 Jul 2021 17:05:41 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Jul 2021 17:25:48 GMT and should not be manually modified.
+
+## 1.4.0
+Fri, 30 Jul 2021 17:25:48 GMT
+
+### Minor changes
+
+- Base Scroll component on Container component
 
 ## 1.3.0
 Fri, 30 Jul 2021 17:05:41 GMT

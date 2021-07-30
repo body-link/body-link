@@ -2,6 +2,18 @@
   "name": "@body-link/ui",
   "entries": [
     {
+      "version": "1.4.0",
+      "tag": "@body-link/ui_v1.4.0",
+      "date": "Fri, 30 Jul 2021 17:25:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Base Scroll component on Container component"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.3.0",
       "tag": "@body-link/ui_v1.3.0",
       "date": "Fri, 30 Jul 2021 17:05:41 GMT",
