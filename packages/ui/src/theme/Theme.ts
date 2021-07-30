@@ -1,4 +1,4 @@
-import { CSSProperties } from 'react';
+import { CSSObject } from '@emotion/css';
 import { isArray, isText } from '@body-link/type-guards';
 import {
   EThemeFont,
@@ -28,7 +28,7 @@ export class Theme {
 
   public px = (value: number): string => `${value}px`;
 
-  public getFont = (fontName: EThemeFont): CSSProperties => this.fonts[fontName];
+  public getFont = (fontName: EThemeFont): CSSObject => this.fonts[fontName];
 
   public gridCoefficientToNumber = (gridCoefficient: TGridCoefficient): number =>
     Math.round(this.gridSize * gridCoefficient);
