@@ -1,6 +1,13 @@
 # Change Log - @body-link/helpers
 
-This log was last generated on Wed, 28 Jul 2021 15:38:00 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Jul 2021 17:05:41 GMT and should not be manually modified.
+
+## 1.5.1
+Fri, 30 Jul 2021 17:05:41 GMT
+
+### Patches
+
+- Lift atomValueProjection
 
 ## 1.5.0
 Wed, 28 Jul 2021 15:38:00 GMT
