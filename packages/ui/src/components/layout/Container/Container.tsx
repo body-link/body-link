@@ -14,6 +14,7 @@ const propClassNames = [
   'isDimmed',
   'isHighlighted',
   'isHoverable',
+  'isClickable',
   'isElevated',
 ] as const;
 
@@ -56,6 +57,9 @@ const useStyles = makeStyles<TPropClassName>((theme) => {
         backgroundColor: theme.colors.container.hoverable,
         color: theme.colors.container.hoverableText,
       },
+    },
+    isClickable: {
+      cursor: 'pointer',
     },
     isElevated: {
       boxShadow: theme.shadows.overlay,
