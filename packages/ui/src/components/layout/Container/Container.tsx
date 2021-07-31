@@ -66,6 +66,14 @@ const useStyles = makeStyles<TPropClassName>((theme) => {
 // eslint-disable-next-line @rushstack/typedef-var
 export const Container = React.forwardRef<HTMLDivElement, IPropsContainer>(({ className, ...rest }, ref) => {
   const classes = useStyles();
-  const classNames = propClassNames.filter((n) => rest[n]).map((n) => classes[n]);
+  const classNames = propClassNames
+    .filter((n) => {
+      if (n in rest) {
+        const v = rest[n];
+        delete rest[n];
+        return v;
+      }
+    })
+    .map((n) => classes[n]);
   return <Stack {...rest} ref={ref} className={cx(classNames, className)} />;
 });

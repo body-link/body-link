@@ -5,7 +5,6 @@ import { IPropsIcon } from './utils';
 import { EThemeFont } from '../../theme';
 import { Box } from '../layout/Box/Box';
 import { Text } from '../content/Text/Text';
-import { Stack } from '../layout/Stack/Stack';
 import { IconClear } from './IconClear';
 import { IconError } from './IconError';
 import { IconMinus } from './IconMinus';
@@ -25,6 +24,7 @@ import { IconSortASC } from './IconSortASC';
 import { IconSortDESC } from './IconSortDESC';
 import { IconMore } from './IconMore';
 import { IconArrow } from './IconArrow';
+import { Container } from '../layout/Container/Container';
 
 export default {
   title: 'Icons',
@@ -73,15 +73,18 @@ export const All: Story<IPropsIcon> = (props) => {
         (c) => c.displayName ?? ''
         /* eslint-disable-next-line @typescript-eslint/naming-convention */
       ).map((Icon, index) => (
-        <Stack
-          isMiddled
+        <Container
+          p={2}
+          isDimmed
+          isHoverable
+          isCentered
           spacing={2}
           key={index}
-          style={{ backgroundColor: '#f0f0f0', padding: '16px', borderRadius: '8px', overflow: 'hidden' }}
+          style={{ borderRadius: '8px', overflow: 'hidden' }}
         >
           <Icon {...props} />
           <Text variant={EThemeFont.Caption}>{Icon.displayName?.substr(4)}</Text>
-        </Stack>
+        </Container>
       ))}
     </Box>
   );

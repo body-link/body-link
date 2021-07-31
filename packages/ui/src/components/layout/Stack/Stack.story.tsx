@@ -20,9 +20,9 @@ export const Basic: Story<IPropsStack> = () => {
         </Box>
         <Box w={2} h={2} style={{ backgroundColor: 'coral' }} />
       </Stack>
-      <Stack isCentered spacing={1}>
+      <Stack alignItems="center" spacing={1}>
         <Box p={1} style={{ backgroundColor: 'coral' }}>
-          isCentered
+          alignItems=center
         </Box>
         <Box w={2} h={2} style={{ backgroundColor: 'coral' }} />
         <Box p={1} style={{ backgroundColor: 'coral' }}>
@@ -38,7 +38,7 @@ export const Basic: Story<IPropsStack> = () => {
         </Box>
         <Box w={2} h={2} style={{ backgroundColor: 'coral' }} />
       </Stack>
-      <Stack isInline isCentered spacing={1}>
+      <Stack isInline alignItems="center" spacing={1}>
         <Box p={1} style={{ backgroundColor: 'coral' }}>
           isInline
         </Box>
@@ -47,12 +47,12 @@ export const Basic: Story<IPropsStack> = () => {
         </Box>
         <Box w={2} h={2} style={{ backgroundColor: 'coral' }} />
         <Box p={1} style={{ backgroundColor: 'coral' }}>
-          isCentered
+          alignItems=center
         </Box>
       </Stack>
-      <Stack isMiddled w={20} h={20} style={{ backgroundColor: 'coral' }}>
+      <Stack isCentered w={20} h={20} style={{ backgroundColor: 'coral' }}>
         <Box p={1} style={{ backgroundColor: 'white' }}>
-          isMiddled
+          isCentered
         </Box>
       </Stack>
     </Stack>

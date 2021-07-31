@@ -1,7 +1,12 @@
 import React from 'react';
-import { cx } from '@emotion/css';
+import { CSSObject, cx } from '@emotion/css';
 import { optionalCall } from '@body-link/helpers';
 import { makeStyles, TSpace, TSpaceValue } from '../../../theme';
+
+interface IFlexItem {
+  flex?: CSSObject['flex'];
+  alignSelf?: CSSObject['alignSelf'];
+}
 
 interface ISpacing {
   p?: TSpaceValue;
@@ -25,13 +30,14 @@ interface ISizing {
   hMax?: TSpace;
 }
 
-export interface IPropsBox extends React.HTMLAttributes<HTMLDivElement>, ISpacing, ISizing {}
+export interface IPropsBox extends React.HTMLAttributes<HTMLDivElement>, ISpacing, ISizing, IFlexItem {}
 
 // eslint-disable-next-line @rushstack/typedef-var
-const useStyles = makeStyles<ISpacing & ISizing>((theme, props) => {
+const useStyles = makeStyles<ISpacing & ISizing & IFlexItem>((theme, props) => {
   return {
     root: {
-      flexGrow: 1,
+      flex: props.flex,
+      alignSelf: props.alignSelf,
       boxSizing: 'border-box',
       width: optionalCall(theme.spaceToCSSValue, props.w),
       minWidth: optionalCall(theme.spaceToCSSValue, props.wMin),
@@ -55,13 +61,38 @@ const useStyles = makeStyles<ISpacing & ISizing>((theme, props) => {
 
 // eslint-disable-next-line @rushstack/typedef-var
 export const Box = React.forwardRef<HTMLDivElement, IPropsBox>(
-  ({ w, wMin, wMax, h, hMin, hMax, p, pt, pb, pr, pl, m, mt, mb, mr, ml, className, ...rest }, ref) => {
+  (
+    {
+      w,
+      wMin,
+      wMax,
+      h,
+      hMin,
+      hMax,
+      p,
+      pt,
+      pb,
+      pr,
+      pl,
+      m,
+      mt,
+      mb,
+      mr,
+      ml,
+      flex,
+      alignSelf,
+      className,
+      ...rest
+    },
+    ref
+  ) => {
     return (
       <div
         {...rest}
         ref={ref}
         className={cx(
-          useStyles({ w, wMin, wMax, h, hMin, hMax, p, pt, pb, pr, pl, m, mt, mb, mr, ml }).root,
+          useStyles({ w, wMin, wMax, h, hMin, hMax, p, pt, pb, pr, pl, m, mt, mb, mr, ml, flex, alignSelf })
+            .root,
           className
         )}
       />

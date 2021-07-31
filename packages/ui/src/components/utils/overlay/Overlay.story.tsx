@@ -114,7 +114,7 @@ export const Basic: Story<IProps> = ({
   React.useEffect(() => overlay.destroy, []);
 
   return (
-    <Stack spacing={10} isCentered>
+    <Stack spacing={10} alignItems="center">
       <Stack isInline spacing={2} p={2}>
         {/* eslint-disable-next-line react/jsx-no-bind */}
         <button onClick={open}>Open</button>

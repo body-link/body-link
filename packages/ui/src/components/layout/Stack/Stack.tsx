@@ -5,20 +5,23 @@ import { important, makeStyles, TSpace } from '../../../theme';
 import { Box, IPropsBox } from '../Box/Box';
 
 interface IStyleProps {
+  spacing?: TSpace;
   isInline?: boolean;
   isCentered?: boolean;
-  isMiddled?: boolean;
-  spacing?: TSpace;
+  alignItems?: CSSObject['alignItems'];
+  justifyContent?: CSSObject['justifyContent'];
 }
 
 export interface IPropsStack extends IPropsBox, IStyleProps {}
 
 // eslint-disable-next-line @rushstack/typedef-var
 const useStyles = makeStyles<IStyleProps>(
-  (theme, { spacing, isInline = false, isCentered = false, isMiddled = false }) => {
+  (theme, { spacing, isInline = false, isCentered = false, alignItems, justifyContent }) => {
     const root: CSSObject = {
       display: 'flex',
       flexDirection: isInline ? 'row' : 'column',
+      alignItems,
+      justifyContent,
     };
     if (isDefined(spacing)) {
       const primary = important(theme.spaceToCSSValue(spacing));
@@ -43,10 +46,8 @@ const useStyles = makeStyles<IStyleProps>(
         });
       }
     }
-    if (isMiddled || isCentered) {
+    if (isCentered) {
       root.alignItems = 'center';
-    }
-    if (isMiddled) {
       root.justifyContent = 'center';
     }
     return {
@@ -57,12 +58,15 @@ const useStyles = makeStyles<IStyleProps>(
 
 // eslint-disable-next-line @rushstack/typedef-var
 export const Stack = React.forwardRef<HTMLDivElement, IPropsStack>(
-  ({ isInline, isCentered, isMiddled, spacing, className, ...rest }, ref) => {
+  ({ spacing, isInline, isCentered, alignItems, justifyContent, className, ...rest }, ref) => {
     return (
       <Box
         {...rest}
         ref={ref}
-        className={cx(useStyles({ isInline, isCentered, isMiddled, spacing }).root, className)}
+        className={cx(
+          useStyles({ spacing, isInline, isCentered, alignItems, justifyContent }).root,
+          className
+        )}
       />
     );
   }

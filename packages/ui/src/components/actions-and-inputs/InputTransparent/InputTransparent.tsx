@@ -13,7 +13,6 @@ const useStyles = makeStyles((theme) => {
   const style: CSSObject = {
     'all': 'initial',
     ...theme.fonts.BodyLine,
-    'flexGrow': 1,
     'width': '100%',
     'minWidth': theme.spaceToCSSValue(3),
     'boxSizing': 'border-box',

@@ -14,7 +14,6 @@ const useStyles = makeStyles<'root' | 'fit'>((theme) => {
     root: {
       'all': 'initial',
       ...theme.fonts.BodyLine,
-      'flexGrow': 1,
       'width': '100%',
       'minWidth': theme.spaceToCSSValue(3),
       'position': 'relative',
