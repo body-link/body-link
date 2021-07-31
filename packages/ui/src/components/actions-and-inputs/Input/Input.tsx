@@ -1,6 +1,6 @@
 import React from 'react';
 import { isDefined, isText, TIdentifier } from '@body-link/type-guards';
-import { TSpace, useTheme } from '../../../theme';
+import { IFlexItem, ISizingWidth, useTheme } from '../../../theme';
 import { InputContainer } from '../InputContainer/InputContainer';
 import { Spinner } from '../../status-and-feedback/Spinner/Spinner';
 import { IconClear } from '../../icons/IconClear';
@@ -11,16 +11,10 @@ import { IconError } from '../../icons/IconError';
 
 type TInputProps = React.InputHTMLAttributes<HTMLInputElement>;
 
-interface ISizing {
-  w?: TSpace;
-  wMin?: TSpace;
-  wMax?: TSpace;
-  h?: TSpace;
-  hMin?: TSpace;
-  hMax?: TSpace;
-}
-
-export interface IPropsInput extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>, ISizing {
+export interface IPropsInput
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>,
+    ISizingWidth,
+    IFlexItem {
   value: TIdentifier;
   onChange: (value: string) => void;
   isInvalid?: boolean;

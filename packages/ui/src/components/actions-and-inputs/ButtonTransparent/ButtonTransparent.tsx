@@ -1,8 +1,19 @@
 import React from 'react';
 import { cx } from '@emotion/css';
-import { makeStyles } from '../../../theme';
+import {
+  $borderBox,
+  $initial,
+  IFlexItem,
+  ISizing,
+  makeStyles,
+  useStylesFlexItem,
+  useStylesSizing,
+} from '../../../theme';
 
-export interface IPropsButtonTransparent extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface IPropsButtonTransparent
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    ISizing,
+    IFlexItem {
   isFit?: boolean;
   isDisabled?: boolean;
   ref?: React.Ref<HTMLButtonElement>;
@@ -12,7 +23,6 @@ export interface IPropsButtonTransparent extends React.ButtonHTMLAttributes<HTML
 const useStyles = makeStyles<'root' | 'fit'>((theme) => {
   return {
     root: {
-      'all': 'initial',
       ...theme.fonts.BodyLine,
       'width': '100%',
       'minWidth': theme.spaceToCSSValue(3),
@@ -20,7 +30,6 @@ const useStyles = makeStyles<'root' | 'fit'>((theme) => {
       'display': 'flex',
       'alignItems': 'center',
       'justifyContent': 'center',
-      'boxSizing': 'border-box',
       'border': 0,
       'outline': 0,
       'backgroundColor': 'transparent',
@@ -44,15 +53,30 @@ const useStyles = makeStyles<'root' | 'fit'>((theme) => {
 export const ButtonTransparent: React.FC<IPropsButtonTransparent> = React.forwardRef<
   HTMLButtonElement,
   IPropsButtonTransparent
->(({ isDisabled = false, isFit = false, className, ...rest }, ref) => {
-  const classes = useStyles();
-  return (
-    <button
-      type="button"
-      {...rest}
-      ref={ref}
-      disabled={isDisabled}
-      className={cx(classes.root, isFit && classes.fit, className)}
-    />
-  );
-});
+>(
+  (
+    { isDisabled = false, isFit = false, w, wMin, wMax, h, hMin, hMax, flex, alignSelf, className, ...rest },
+    ref
+  ) => {
+    const classes = useStyles();
+    const { root: $sizing } = useStylesSizing({ w, wMin, wMax, h, hMin, hMax });
+    const { root: $flexItem } = useStylesFlexItem({ flex, alignSelf });
+    return (
+      <button
+        type="button"
+        {...rest}
+        ref={ref}
+        disabled={isDisabled}
+        className={cx(
+          $initial,
+          $borderBox,
+          classes.root,
+          $sizing,
+          $flexItem,
+          isFit && classes.fit,
+          className
+        )}
+      />
+    );
+  }
+);

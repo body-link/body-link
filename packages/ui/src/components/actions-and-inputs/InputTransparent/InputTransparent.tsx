@@ -1,6 +1,6 @@
 import React from 'react';
 import { CSSObject, cx } from '@emotion/css';
-import { makeStyles } from '../../../theme';
+import { $borderBox, $initial, makeStyles } from '../../../theme';
 
 export interface IPropsInputTransparent extends React.InputHTMLAttributes<HTMLInputElement> {
   isDisabled?: boolean;
@@ -11,11 +11,9 @@ export interface IPropsInputTransparent extends React.InputHTMLAttributes<HTMLIn
 // eslint-disable-next-line @rushstack/typedef-var
 const useStyles = makeStyles((theme) => {
   const style: CSSObject = {
-    'all': 'initial',
     ...theme.fonts.BodyLine,
     'width': '100%',
     'minWidth': theme.spaceToCSSValue(3),
-    'boxSizing': 'border-box',
     'border': 0,
     'outline': 0,
     'backgroundColor': 'transparent',
@@ -56,7 +54,7 @@ export const InputTransparent: React.FC<IPropsInputTransparent> = React.forwardR
       readOnly={isReadOnly}
       {...rest}
       ref={ref}
-      className={cx(useStyles().root, className)}
+      className={cx($initial, $borderBox, useStyles().root, className)}
     />
   );
 });

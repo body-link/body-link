@@ -93,3 +93,35 @@ export type TSpaceValue =
   | [TSpace, TSpace]
   | [TSpace, TSpace, TSpace]
   | [TSpace, TSpace, TSpace, TSpace];
+
+export interface ISizingHeight {
+  h?: TSpace;
+  hMin?: TSpace;
+  hMax?: TSpace;
+}
+
+export interface ISizingWidth {
+  w?: TSpace;
+  wMin?: TSpace;
+  wMax?: TSpace;
+}
+
+export interface ISizing extends ISizingHeight, ISizingWidth {}
+
+export interface IFlexItem {
+  flex?: CSSObject['flex'];
+  alignSelf?: CSSObject['alignSelf'];
+}
+
+export interface ISpacing {
+  p?: TSpaceValue;
+  pt?: TSpace;
+  pb?: TSpace;
+  pr?: TSpace;
+  pl?: TSpace;
+  m?: TSpaceValue;
+  mt?: TSpace;
+  mb?: TSpace;
+  mr?: TSpace;
+  ml?: TSpace;
+}

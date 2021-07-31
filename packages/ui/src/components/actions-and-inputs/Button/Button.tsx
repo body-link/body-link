@@ -1,7 +1,7 @@
 import React from 'react';
 import { CSSObject, cx } from '@emotion/css';
 import { isDefined, isText } from '@body-link/type-guards';
-import { makeStyles } from '../../../theme';
+import { ISizingHeight, makeStyles } from '../../../theme';
 import { ButtonTransparent, IPropsButtonTransparent } from '../ButtonTransparent/ButtonTransparent';
 import { Spinner } from '../../status-and-feedback/Spinner/Spinner';
 
@@ -151,7 +151,7 @@ const useStyles = makeStyles<EButtonVariant | 'content' | 'onlyIcon' | 'loading'
   };
 });
 
-export interface IPropsButton extends IPropsButtonTransparent {
+export interface IPropsButton extends Omit<IPropsButtonTransparent, keyof ISizingHeight> {
   variant: EButtonVariant;
   children?: string;
   icon?: React.ReactNode;

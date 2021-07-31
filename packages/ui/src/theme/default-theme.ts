@@ -142,9 +142,9 @@ const PRIMITIVE_FONT_WEIGHTS = {
 const GRID_SIZE: number = 8;
 
 const fontBase: CSSObject = {
-  'textRendering': 'optimizeLegibility',
-  '-webkit-font-smoothing': 'antialiased',
-  '-moz-osx-font-smoothing': 'grayscale',
+  textRendering: 'optimizeLegibility',
+  WebkitFontSmoothing: 'antialiased',
+  MozOsxFontSmoothing: 'grayscale',
 };
 
 export const defaultThemeOptions: IThemeOptions = {

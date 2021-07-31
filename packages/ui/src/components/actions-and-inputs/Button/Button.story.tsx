@@ -16,6 +16,11 @@ export default {
     isFit: { control: false },
     isDisabled: { control: false },
     isLoading: { control: false },
+    alignSelf: { control: false },
+    flex: { control: false },
+    w: { control: false },
+    wMax: { control: false },
+    wMin: { control: false },
     ref: { control: false },
   },
 } as Meta;
