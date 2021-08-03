@@ -6,41 +6,50 @@ import { IAtomField, IAtomFieldParameters, IAtomFieldState } from './types';
 export class AtomField<T> implements IAtomField<T> {
   public state$: ReadOnlyAtom<IAtomFieldState<T>>;
 
-  private $: Atom<IAtomFieldState<T>>;
+  private _isTouched: boolean = false;
   private readonly _parameters: IAtomFieldParameters<T>;
+  private readonly _state$: Atom<IAtomFieldState<T>>;
 
   public constructor(parameters: IAtomFieldParameters<T>) {
     this._parameters = parameters;
-    const { initialValue, sanitize, validate } = parameters;
-    const resultValue = isDefined(sanitize) ? sanitize(initialValue) : initialValue;
-    const potentialError = isDefined(validate) ? validate(resultValue) : undefined;
-    const isValid = isUndefined(potentialError);
-    const error = isValid ? '' : (potentialError as string);
-    const initialState = {
-      initialValue,
-      currentVal: initialValue,
-      resultValue,
-      isTouched: false,
-      isUntouched: true,
-      isPristine: true,
-      isDirty: false,
-      isValid,
-      isInvalid: !isValid,
-      error,
-    };
-    this.$ = Atom.create(initialState);
-    this.state$ = this.$.view();
+    this._state$ = Atom.create(this._createState(parameters.initialValue));
+    this.state$ = this._state$.view();
   }
 
   public change = (currentVal: T): void => {
-    const { sanitize, validate } = this._parameters;
-    const { initialValue, isTouched } = this.$.get();
+    this._state$.set(this._createState(currentVal));
+  };
+
+  public reset = (): void => {
+    const parameters = this._parameters;
+    this.change('resetValue' in parameters ? parameters.resetValue! : parameters.initialValue);
+  };
+
+  public touch = (): void => {
+    if (!this._isTouched) {
+      this._isTouched = true;
+      this._state$.modify((s) => ({ ...s, isTouched: true, isUntouched: false }));
+    }
+  };
+
+  public untouch = (): void => {
+    if (this._isTouched) {
+      this._isTouched = false;
+      this._state$.modify((s) => ({ ...s, isTouched: false, isUntouched: true }));
+    }
+  };
+
+  private _createState(currentVal: T): IAtomFieldState<T> {
+    const {
+      _isTouched: isTouched,
+      _parameters: { initialValue, sanitize, validate },
+    } = this;
     const resultValue = isDefined(sanitize) ? sanitize(currentVal) : currentVal;
     const isPristine = this._compare(initialValue, currentVal);
     const potentialError = isDefined(validate) ? validate(resultValue) : undefined;
     const isValid = isUndefined(potentialError);
     const error = isValid ? '' : (potentialError as string);
-    this.$.set({
+    return {
       initialValue,
       currentVal,
       resultValue,
@@ -51,21 +60,8 @@ export class AtomField<T> implements IAtomField<T> {
       isValid,
       isInvalid: !isValid,
       error,
-    });
-  };
-
-  public reset = (): void => {
-    const params = this._parameters;
-    this.change('resetValue' in params ? (params.resetValue as T) : params.initialValue);
-  };
-
-  public touch = (): void => {
-    this.$.modify((s) => ({ ...s, isTouched: true, isUntouched: false }));
-  };
-
-  public untouch = (): void => {
-    this.$.modify((s) => ({ ...s, isTouched: false, isUntouched: true }));
-  };
+    };
+  }
 
   private _compare(initialValue: T, resultValue: T): boolean {
     if (isDefined(this._parameters.compare)) {

@@ -2,11 +2,11 @@ import { TUnboxArray } from '@body-link/type-guards';
 import { Atom, ReadOnlyAtom } from '../../packlets/atom';
 
 export interface IAtomFieldParameters<T> {
-  initialValue: T;
-  resetValue?: T;
-  validate?: (resultValue: T) => string | void; // Return not-empty string if error
-  sanitize?: (currentVal: T) => T; // Return resultValue
-  compare?: (initialValue: T, resultValue: T) => boolean; // To check pristine
+  readonly initialValue: T;
+  readonly resetValue?: T;
+  readonly validate?: (resultValue: T) => string | void; // Return not-empty string if error
+  readonly sanitize?: (currentVal: T) => T; // Return resultValue
+  readonly compare?: (initialValue: T, resultValue: T) => boolean; // To check pristine
 }
 
 export interface IAtomFieldMapParameters<T> {
