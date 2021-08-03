@@ -34,18 +34,18 @@
     "@storybook/addon-essentials": "~6.3.2",
     "@storybook/addon-storysource": "~6.3.2",
     "@storybook/react": "~6.3.2",
+    "@types/big.js": "~6.1.1",
     "@types/heft-jest": "~1.0.2",
     "@types/node": "~15.6.0",
     "@types/react": "^17.0.4",
     "@types/react-dom": "^17.0.3",
+    "big.js": ">=6.1.0",
     "eslint": "~7.27.0",
+    "memoize-one": ">=5.2.0",
     "react": ">=17.0.0",
     "react-dom": ">=17.0.0",
     "rxjs": ">=7.1.0",
-    "typescript": "^4.2.4",
-    "@types/big.js": "~6.1.1",
-    "big.js": ">=6.1.0",
-    "memoize-one": ">=5.2.0"
+    "typescript": "^4.2.4"
   },
   "dependencies": {
     "@body-link/helpers": "workspace:*",
@@ -54,10 +54,10 @@
   },
   "peerDependencies": {
     "@emotion/css": ">=11.1.0",
+    "big.js": ">=6.1.0",
+    "memoize-one": ">=5.2.0",
     "react": ">=17.0.0",
     "react-dom": ">=17.0.0",
-    "rxjs": ">=7.1.0",
-    "big.js": ">=6.1.0",
-    "memoize-one": ">=5.2.0"
+    "rxjs": ">=7.1.0"
   }
 }
