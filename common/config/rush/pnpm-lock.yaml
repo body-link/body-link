@@ -125,10 +125,12 @@ importers:
       '@storybook/addon-essentials': ~6.3.2
       '@storybook/addon-storysource': ~6.3.2
       '@storybook/react': ~6.3.2
+      '@types/big.js': ~6.1.1
       '@types/heft-jest': ~1.0.2
       '@types/node': ~15.6.0
       '@types/react': ^17.0.4
       '@types/react-dom': ^17.0.3
+      big.js: '>=6.1.0'
       eslint: ~7.27.0
       memoize-one: ~5.2.1
       react: '>=17.0.0'
@@ -150,10 +152,12 @@ importers:
       '@storybook/addon-essentials': 6.3.2_fd4dde6f339a0477df2af7d4de2629de
       '@storybook/addon-storysource': 6.3.2_7a759d72fcbc11ce03c9de110c21df82
       '@storybook/react': 6.3.2_fd4dde6f339a0477df2af7d4de2629de
+      '@types/big.js': 6.1.1
       '@types/heft-jest': 1.0.2
       '@types/node': 15.6.0
       '@types/react': 17.0.11
       '@types/react-dom': 17.0.8
+      big.js: 6.1.1
       eslint: 7.27.0
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
@@ -4677,6 +4681,10 @@ packages:
       '@babel/types': 7.14.2
     dev: true
 
+  /@types/big.js/6.1.1:
+    resolution: {integrity: sha512-Zns+nT0hj96ie+GDbL5NeHxhL4wNz8QMxCHqBvxgc4x0hhgQ/o92rPwqxvPBhY3ZYnH8TJGw/8oCkjhOy2Rfzw==}
+    dev: true
+
   /@types/braces/3.0.0:
     resolution: {integrity: sha512-TbH79tcyi9FHwbyboOKeRachRq63mSuWYXOflsNO9ZyE5ClQ/JaozNKl+aWUq87qPNsXasXxi2AbgfwIJ+8GQw==}
     dev: true
@@ -5912,6 +5920,10 @@ packages:
 
   /big.js/5.2.2:
     resolution: {integrity: sha512-vyL2OymJxmarO8gxMr0mhChsO9QGwhynfuu4+MHTAW6czfq9humCB7rKpUjDd9YUiDPU4mzpyupFSvOClAwbmQ==}
+    dev: true
+
+  /big.js/6.1.1:
+    resolution: {integrity: sha512-1vObw81a8ylZO5ePrtMay0n018TcftpTA5HFKDaSuiUDBo8biRBtjIobw60OpwuvrGk+FsxKamqN4cnmj/eXdg==}
     dev: true
 
   /binary-extensions/1.13.1:

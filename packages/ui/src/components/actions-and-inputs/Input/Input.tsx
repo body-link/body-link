@@ -8,8 +8,10 @@ import { InputContainerItem } from '../InputContainer/InputContainerItem';
 import { InputContainerButtonIcon } from '../InputContainer/InputContainerButtonIcon';
 import { InputContainerInput } from '../InputContainer/InputContainerInput';
 import { IconError } from '../../icons/IconError';
+import { IPropsInputTransparent } from '../InputTransparent/InputTransparent';
 
-type TInputProps = React.InputHTMLAttributes<HTMLInputElement>;
+interface IInputProps
+  extends Omit<IPropsInputTransparent, 'value' | 'isDisabled' | 'isReadOnly' | 'placeholder'> {}
 
 export interface IPropsInput
   extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>,
@@ -22,7 +24,7 @@ export interface IPropsInput
   isReadOnly?: boolean;
   isLoading?: boolean;
   placeholder?: string;
-  inputProps?: TInputProps;
+  inputProps?: IInputProps;
   rightSide?: React.ReactNode;
   error?: string;
   hasClearButton?: boolean;
@@ -41,7 +43,7 @@ export const Input: React.FC<IPropsInput> = React.memo<IPropsInput>(
         isReadOnly = false,
         isLoading = false,
         placeholder,
-        inputProps = {} as TInputProps,
+        inputProps = {} as IInputProps,
         rightSide,
         error,
         hasClearButton = false,

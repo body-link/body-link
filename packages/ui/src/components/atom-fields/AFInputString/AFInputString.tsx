@@ -38,7 +38,7 @@ function Component({
         field.change(fieldVal);
       } else {
         if (isOptional) {
-          field.change(undefined as unknown as string);
+          (field as AtomField<TOption<string>>).change(undefined);
         } else {
           field.change('');
         }
@@ -46,6 +46,7 @@ function Component({
     },
     [field, isOptional]
   );
+  // Field values sync
   React.useEffect(() => {
     if (currentVal !== prevValue.current) {
       setValue(currentVal);

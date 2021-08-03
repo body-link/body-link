@@ -59,6 +59,10 @@
       "allowedCategories": [ "packages" ]
     },
     {
+      "name": "big.js",
+      "allowedCategories": [ "packages" ]
+    },
+    {
       "name": "doctest-ts",
       "allowedCategories": [ "packages" ]
     },

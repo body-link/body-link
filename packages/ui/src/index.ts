@@ -10,6 +10,7 @@ export * from './components/actions-and-inputs/InputTransparent/InputTransparent
 export * from './components/actions-and-inputs/ButtonTransparent/ButtonTransparent';
 
 export * from './components/atom-fields/AFInputString/AFInputString';
+export * from './components/atom-fields/AFInputNumber/AFInputNumber';
 
 export * from './components/content/Text/Text';
 
