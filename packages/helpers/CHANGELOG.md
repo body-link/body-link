@@ -1,6 +1,18 @@
 # Change Log - @body-link/helpers
 
-This log was last generated on Fri, 30 Jul 2021 17:05:41 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Aug 2021 07:37:59 GMT and should not be manually modified.
+
+## 1.6.0
+Tue, 03 Aug 2021 07:37:59 GMT
+
+### Minor changes
+
+- Make useForkRef support TOption<Ref<HTMLElement>>
+- Implement createUseWatcherR
+
+### Patches
+
+- Refactor AtomField
 
 ## 1.5.1
 Fri, 30 Jul 2021 17:05:41 GMT

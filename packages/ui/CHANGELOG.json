@@ -2,6 +2,37 @@
   "name": "@body-link/ui",
   "entries": [
     {
+      "version": "1.5.0",
+      "tag": "@body-link/ui_v1.5.0",
+      "date": "Tue, 03 Aug 2021 07:37:59 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Support flexbox in Box & Stack [breaking]"
+          },
+          {
+            "comment": "Support flexbox in InputTransparent & ButtonTransparent"
+          },
+          {
+            "comment": "Implement isClickable on Container component"
+          },
+          {
+            "comment": "Implement AFInputNumber component"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Move memoize-one in peerDependencies"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@body-link/helpers\" to `1.6.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.4.0",
       "tag": "@body-link/ui_v1.4.0",
       "date": "Fri, 30 Jul 2021 17:25:48 GMT",

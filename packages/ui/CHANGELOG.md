@@ -1,6 +1,20 @@
 # Change Log - @body-link/ui
 
-This log was last generated on Fri, 30 Jul 2021 17:25:48 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Aug 2021 07:37:59 GMT and should not be manually modified.
+
+## 1.5.0
+Tue, 03 Aug 2021 07:37:59 GMT
+
+### Minor changes
+
+- Support flexbox in Box & Stack [breaking]
+- Support flexbox in InputTransparent & ButtonTransparent
+- Implement isClickable on Container component
+- Implement AFInputNumber component
+
+### Patches
+
+- Move memoize-one in peerDependencies
 
 ## 1.4.0
 Fri, 30 Jul 2021 17:25:48 GMT

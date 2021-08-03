@@ -2,6 +2,26 @@
   "name": "@body-link/helpers",
   "entries": [
     {
+      "version": "1.6.0",
+      "tag": "@body-link/helpers_v1.6.0",
+      "date": "Tue, 03 Aug 2021 07:37:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Refactor AtomField"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Make useForkRef support TOption<Ref<HTMLElement>>"
+          },
+          {
+            "comment": "Implement createUseWatcherR"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.5.1",
       "tag": "@body-link/helpers_v1.5.1",
       "date": "Fri, 30 Jul 2021 17:05:41 GMT",
