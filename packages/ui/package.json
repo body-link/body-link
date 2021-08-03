@@ -44,19 +44,20 @@
     "rxjs": ">=7.1.0",
     "typescript": "^4.2.4",
     "@types/big.js": "~6.1.1",
-    "big.js": ">=6.1.0"
+    "big.js": ">=6.1.0",
+    "memoize-one": ">=5.2.0"
   },
   "dependencies": {
     "@body-link/helpers": "workspace:*",
     "@body-link/type-guards": "workspace:*",
-    "@popperjs/core": "~2.9.2",
-    "memoize-one": "~5.2.1"
+    "@popperjs/core": "~2.9.2"
   },
   "peerDependencies": {
     "@emotion/css": ">=11.1.0",
     "react": ">=17.0.0",
     "react-dom": ">=17.0.0",
     "rxjs": ">=7.1.0",
-    "big.js": ">=6.1.0"
+    "big.js": ">=6.1.0",
+    "memoize-one": ">=5.2.0"
   }
 }
