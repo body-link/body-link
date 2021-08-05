@@ -1,6 +1,13 @@
 # Change Log - @body-link/helpers
 
-This log was last generated on Tue, 03 Aug 2021 07:37:59 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Aug 2021 05:05:07 GMT and should not be manually modified.
+
+## 1.6.1
+Thu, 05 Aug 2021 05:05:07 GMT
+
+### Patches
+
+- Make IFig more DX friendly [breaking]
 
 ## 1.6.0
 Tue, 03 Aug 2021 07:37:59 GMT

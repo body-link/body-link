@@ -2,6 +2,18 @@
   "name": "@body-link/helpers",
   "entries": [
     {
+      "version": "1.6.1",
+      "tag": "@body-link/helpers_v1.6.1",
+      "date": "Thu, 05 Aug 2021 05:05:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Make IFig more DX friendly [breaking]"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.6.0",
       "tag": "@body-link/helpers_v1.6.0",
       "date": "Tue, 03 Aug 2021 07:37:59 GMT",

@@ -2,6 +2,18 @@
   "name": "@body-link/ui",
   "entries": [
     {
+      "version": "1.5.1",
+      "tag": "@body-link/ui_v1.5.1",
+      "date": "Thu, 05 Aug 2021 05:05:07 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@body-link/helpers\" to `1.6.1`"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.5.0",
       "tag": "@body-link/ui_v1.5.0",
       "date": "Tue, 03 Aug 2021 07:37:59 GMT",
