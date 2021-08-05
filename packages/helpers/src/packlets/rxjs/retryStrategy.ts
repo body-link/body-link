@@ -5,7 +5,9 @@ import { mergeMap, retryWhen } from 'rxjs/operators';
 export const retryStrategy = <T>(maxAttempts = 60): MonoTypeOperatorFunction<T> => {
   return retryWhen<T>((attempts) =>
     attempts.pipe(
-      mergeMap((error, i) => (i < maxAttempts ? timer((i < 7 ? (i + 1) * 2 : 60) * 1000) : throwError(error)))
+      mergeMap((error, i) =>
+        i < maxAttempts ? timer((i < 7 ? (i + 1) * 2 : 60) * 1000) : throwError(() => error)
+      )
     )
   );
 };
