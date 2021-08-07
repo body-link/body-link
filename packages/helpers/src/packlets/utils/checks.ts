@@ -49,7 +49,10 @@ export const isObjectShallowEqual = <T extends unknown>(objA: T, objB: T): boole
 
   for (let i = 0; i < len; i++) {
     const key = aKeys[i];
-    if (objA[key] !== objB[key] || !Object.prototype.hasOwnProperty.call(objB, key)) {
+    if (
+      (objA as TAnyObject)[key] !== (objB as TAnyObject)[key] ||
+      !Object.prototype.hasOwnProperty.call(objB, key)
+    ) {
       return false;
     }
   }
