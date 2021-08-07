@@ -7,11 +7,6 @@ const stage: { fn: (v: unknown) => boolean; truthy: unknown[]; falsy: unknown[] 
     falsy: ['', null, 1, true, NaN],
   },
   {
-    fn: tg.isDefined,
-    truthy: ['', null, 1, true, NaN],
-    falsy: [undefined],
-  },
-  {
     fn: tg.isNull,
     truthy: [null],
     falsy: ['', undefined, 1, true, NaN],
@@ -34,17 +29,27 @@ const stage: { fn: (v: unknown) => boolean; truthy: unknown[]; falsy: unknown[] 
   {
     fn: tg.isArray,
     truthy: [[1, 2, 3], []],
-    falsy: [null, undefined, '', 1, true, NaN, new Set(), new Map(), () => null],
+    falsy: [null, undefined, '', 1, true, NaN, new Set(), new Map(), () => null, {}],
   },
   {
     fn: tg.isObject,
-    truthy: [{ foo: 'bar' }, {}, new Set(), new Map()],
+    truthy: [{ foo: 'bar' }, {}, new Set(), new Map(), []],
     falsy: [null, undefined, '', 1, true, NaN, () => null],
   },
   {
     fn: tg.isNumber,
     truthy: [-1, 0, 1, 999_999_999, 6.7],
     falsy: [null, undefined, '', true, NaN, new Set(), new Map(), () => null],
+  },
+  {
+    fn: tg.isInteger,
+    truthy: [-1, 0, 1, 999_999_999],
+    falsy: [-1.5, 1.2, 999_999_999.45],
+  },
+  {
+    fn: tg.isFloat,
+    truthy: [-1.5, 1.2, 999_999_999.45],
+    falsy: [-1, 0, 1, 999_999_999],
   },
   {
     fn: tg.isString,
