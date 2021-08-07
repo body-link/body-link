@@ -16,7 +16,10 @@ export const createIcon: (params: { viewBox: string; path: JSX.Element }) => Rea
 ) =>
   React.memo<IPropsIcon>(
     React.forwardRef<SVGSVGElement, IPropsIcon>(
-      ({ size = 2, color = 'currentColor', role = 'presentation', rotate, flip, ...rest }, ref) => {
+      (
+        { size = 2, color = 'currentColor', display = 'block', role = 'presentation', rotate, flip, ...rest },
+        ref
+      ) => {
         const theme = useTheme();
 
         size = theme.spaceToCSSValue(size);
@@ -25,6 +28,7 @@ export const createIcon: (params: { viewBox: string; path: JSX.Element }) => Rea
           ...rest,
           ref,
           role,
+          display,
           fill: color,
           width: size,
           height: size,
