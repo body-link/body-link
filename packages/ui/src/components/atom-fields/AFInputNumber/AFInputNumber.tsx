@@ -69,9 +69,8 @@ function Component({
           setIsEditing(false);
           setText(String(field.state$.get().resultValue ?? ''));
         },
-        onFocus: (el) => {
+        onFocus: () => {
           setIsEditing(true);
-          el.select();
         },
         onZoom: (el, e) => {
           const prevValue = field.state$.get().resultValue ?? 0;

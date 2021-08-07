@@ -6,6 +6,7 @@ import { InputTransparent, IPropsInputTransparent } from '../InputTransparent/In
 // eslint-disable-next-line @rushstack/typedef-var
 const useStyles = makeStyles((theme) => {
   const style: CSSObject = {
+    'lineHeight': 0, // to prevent scroll inside container in Chrome
     'paddingLeft': theme.spaceToCSSValue(0.5),
     'paddingRight': theme.spaceToCSSValue(0.5),
     '&:last-child': {

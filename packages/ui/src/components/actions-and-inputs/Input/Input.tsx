@@ -11,7 +11,10 @@ import { IconError } from '../../icons/IconError';
 import { IPropsInputTransparent } from '../InputTransparent/InputTransparent';
 
 interface IInputProps
-  extends Omit<IPropsInputTransparent, 'value' | 'isDisabled' | 'isReadOnly' | 'placeholder'> {}
+  extends Omit<
+    IPropsInputTransparent,
+    'value' | 'isDisabled' | 'isReadOnly' | 'selectOnFocus' | 'placeholder'
+  > {}
 
 export interface IPropsInput
   extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>,
@@ -22,6 +25,7 @@ export interface IPropsInput
   isInvalid?: boolean;
   isDisabled?: boolean;
   isReadOnly?: boolean;
+  selectOnFocus?: boolean;
   isLoading?: boolean;
   placeholder?: string;
   inputProps?: IInputProps;
@@ -41,6 +45,7 @@ export const Input: React.FC<IPropsInput> = React.memo<IPropsInput>(
         isInvalid = false,
         isDisabled = false,
         isReadOnly = false,
+        selectOnFocus = false,
         isLoading = false,
         placeholder,
         inputProps = {} as IInputProps,
@@ -82,6 +87,7 @@ export const Input: React.FC<IPropsInput> = React.memo<IPropsInput>(
             onChange={innerOnChange}
             isDisabled={isDisabled}
             isReadOnly={isReadOnly}
+            selectOnFocus={selectOnFocus}
             placeholder={placeholder}
           />
           {isText(error) && (

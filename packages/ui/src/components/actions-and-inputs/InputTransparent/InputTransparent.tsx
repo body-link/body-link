@@ -1,10 +1,13 @@
 import React from 'react';
 import { CSSObject, cx } from '@emotion/css';
+import { TAnyObject } from '@body-link/type-guards';
+import { mergeFunctionsInObjects } from '@body-link/helpers';
 import { $borderBox, $initial, makeStyles } from '../../../theme';
 
 export interface IPropsInputTransparent extends React.InputHTMLAttributes<HTMLInputElement> {
   isDisabled?: boolean;
   isReadOnly?: boolean;
+  selectOnFocus?: boolean;
   ref?: React.Ref<HTMLInputElement>;
 }
 
@@ -46,7 +49,15 @@ const useStyles = makeStyles((theme) => {
 export const InputTransparent: React.FC<IPropsInputTransparent> = React.forwardRef<
   HTMLInputElement,
   IPropsInputTransparent
->(({ isDisabled = false, isReadOnly = false, className, ...rest }, ref) => {
+>(({ isDisabled = false, isReadOnly = false, selectOnFocus = false, className, ...rest }, ref) => {
+  if (selectOnFocus) {
+    Object.assign(
+      rest,
+      mergeFunctionsInObjects(rest as TAnyObject, {
+        onFocus: (e: React.FocusEvent<HTMLInputElement>) => e.target.select(),
+      })
+    );
+  }
   return (
     <input
       type="text"

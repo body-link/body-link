@@ -1,5 +1,5 @@
 import React from 'react';
-import { isDefined, isText, TOption } from '@body-link/type-guards';
+import { isDefined, isText, TOption, TTypify } from '@body-link/type-guards';
 import { AtomField, mergeFunctionsInObjects, useObservable } from '@body-link/helpers';
 import { Input, IPropsInput } from '../../actions-and-inputs/Input/Input';
 
@@ -56,7 +56,9 @@ function Component({
     <Input
       value={value ?? ''}
       onChange={onChange}
-      inputProps={mergeFunctionsInObjects(inputProps, { onBlur: field.touch })}
+      inputProps={mergeFunctionsInObjects(inputProps as TTypify<IPropsInput['inputProps']>, {
+        onBlur: field.touch,
+      })}
       isInvalid={isInvalid}
       hasClearButton={isOptional}
       {...rest}
