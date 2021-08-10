@@ -2,6 +2,7 @@ import React from 'react';
 import { cx } from '@emotion/css';
 import {
   $borderBox,
+  $overflowHidden,
   IFlexItem,
   ISizing,
   ISpacing,
@@ -10,7 +11,9 @@ import {
   useStylesSpacing,
 } from '../../../theme';
 
-export interface IPropsBox extends React.HTMLAttributes<HTMLDivElement>, ISpacing, ISizing, IFlexItem {}
+export interface IPropsBox extends React.HTMLAttributes<HTMLDivElement>, ISpacing, ISizing, IFlexItem {
+  overflowHidden?: boolean;
+}
 
 // eslint-disable-next-line @rushstack/typedef-var
 export const Box = React.forwardRef<HTMLDivElement, IPropsBox>(
@@ -34,6 +37,7 @@ export const Box = React.forwardRef<HTMLDivElement, IPropsBox>(
       ml,
       flex,
       alignSelf,
+      overflowHidden = false,
       className,
       ...rest
     },
@@ -42,6 +46,12 @@ export const Box = React.forwardRef<HTMLDivElement, IPropsBox>(
     const { root: $sizing } = useStylesSizing({ w, wMin, wMax, h, hMin, hMax });
     const { root: $spacing } = useStylesSpacing({ p, pt, pb, pr, pl, m, mt, mb, mr, ml });
     const { root: $flexItem } = useStylesFlexItem({ flex, alignSelf });
-    return <div {...rest} ref={ref} className={cx($borderBox, $sizing, $spacing, $flexItem, className)} />;
+    return (
+      <div
+        {...rest}
+        ref={ref}
+        className={cx($borderBox, overflowHidden && $overflowHidden, $sizing, $spacing, $flexItem, className)}
+      />
+    );
   }
 );

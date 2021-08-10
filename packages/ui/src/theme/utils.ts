@@ -51,6 +51,10 @@ export const $borderBox: string = css({
   boxSizing: 'border-box',
 });
 
+export const $overflowHidden: string = css({
+  overflow: 'hidden',
+});
+
 // eslint-disable-next-line @rushstack/typedef-var
 export const useStylesSizing = makeStyles<ISizing>((theme, props) => {
   return {
