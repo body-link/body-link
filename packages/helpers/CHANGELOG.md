@@ -1,6 +1,13 @@
 # Change Log - @body-link/helpers
 
-This log was last generated on Thu, 05 Aug 2021 05:05:07 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Aug 2021 14:12:27 GMT and should not be manually modified.
+
+## 1.7.0
+Tue, 10 Aug 2021 14:12:27 GMT
+
+### Minor changes
+
+- Revert toFig back to cold observable [breaking]
 
 ## 1.6.1
 Thu, 05 Aug 2021 05:05:07 GMT

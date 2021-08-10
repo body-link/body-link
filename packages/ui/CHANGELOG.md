@@ -1,6 +1,15 @@
 # Change Log - @body-link/ui
 
-This log was last generated on Thu, 05 Aug 2021 05:05:07 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Aug 2021 14:12:27 GMT and should not be manually modified.
+
+## 1.6.0
+Tue, 10 Aug 2021 14:12:27 GMT
+
+### Minor changes
+
+- Extend Box with overflowHidden prop
+- Extend inputs with selectOnFocus prop
+- Set display block for icons by default
 
 ## 1.5.1
 Thu, 05 Aug 2021 05:05:07 GMT

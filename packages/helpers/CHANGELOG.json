@@ -2,6 +2,23 @@
   "name": "@body-link/helpers",
   "entries": [
     {
+      "version": "1.7.0",
+      "tag": "@body-link/helpers_v1.7.0",
+      "date": "Tue, 10 Aug 2021 14:12:27 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Revert toFig back to cold observable [breaking]"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@body-link/type-guards\" to `1.2.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.6.1",
       "tag": "@body-link/helpers_v1.6.1",
       "date": "Thu, 05 Aug 2021 05:05:07 GMT",

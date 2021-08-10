@@ -2,6 +2,32 @@
   "name": "@body-link/ui",
   "entries": [
     {
+      "version": "1.6.0",
+      "tag": "@body-link/ui_v1.6.0",
+      "date": "Tue, 10 Aug 2021 14:12:27 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Extend Box with overflowHidden prop"
+          },
+          {
+            "comment": "Extend inputs with selectOnFocus prop"
+          },
+          {
+            "comment": "Set display block for icons by default"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@body-link/helpers\" to `1.7.0`"
+          },
+          {
+            "comment": "Updating dependency \"@body-link/type-guards\" to `1.2.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.5.1",
       "tag": "@body-link/ui_v1.5.1",
       "date": "Thu, 05 Aug 2021 05:05:07 GMT",
