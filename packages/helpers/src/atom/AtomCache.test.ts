@@ -94,7 +94,7 @@ describe('AtomCache', () => {
 
       const source = m.cold('   ------b|', sourceValues);
       const subs = '            ^-----!';
-      const expected = m.cold(' a-----(b|)', expectedValues);
+      const expected = m.hot('  ------(b|)', expectedValues);
 
       const atomCache = new AtomCache({
         getValue$: source,

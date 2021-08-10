@@ -1,5 +1,3 @@
-import { of } from 'rxjs';
-import { delay } from 'rxjs/operators';
 import { marbles } from 'rxjs-marbles/jest';
 import { Compiler, Expect, expecter } from 'ts-snippet';
 import { createFig, toFig } from './fig';
@@ -61,12 +59,6 @@ describe('createFig', () => {
 });
 
 describe('toFig', () => {
-  it('should return initial value instantly', () =>
-    expect(toFig(of(1).pipe(delay(1)), 42).getValue()).toStrictEqual({
-      value: 42,
-      inProgress: true,
-    }));
-
   it(
     'should map single value to fig',
     marbles((m) => {
@@ -78,7 +70,7 @@ describe('toFig', () => {
 
       const source = m.cold('   ------b|', sourceValues);
       const subs = '            ^------!';
-      const expected = m.hot('  a-----b|', expectedValues);
+      const expected = m.cold(' a-----b|', expectedValues);
 
       const destination = toFig(source, undefined);
       m.expect(destination).toBeObservable(expected);
@@ -96,7 +88,7 @@ describe('toFig', () => {
 
       const source = m.cold('   ------#');
       const subs = '            ^-----!';
-      const expected = m.hot('  a-----(b|)', expectedValues);
+      const expected = m.cold(' a-----(b|)', expectedValues);
 
       const destination = toFig(source, undefined);
       m.expect(destination).toBeObservable(expected);
@@ -114,7 +106,7 @@ describe('toFig', () => {
 
       const source = m.cold('   ------#');
       const subs = '            ^-----!';
-      const expected = m.hot('  a-----(b#)', expectedValues);
+      const expected = m.cold(' a-----(b#)', expectedValues);
 
       const destination = toFig(source, undefined, { errorHandlingStrategy: 'pass' });
       m.expect(destination).toBeObservable(expected);
@@ -137,7 +129,7 @@ describe('toFig', () => {
 
       const source = m.cold('   -b-c-d-|', sourceValues);
       const subs = '            ^------!';
-      const expected = m.hot('  ab-c-d-(e|)', expectedValues);
+      const expected = m.cold(' ab-c-d-(e|)', expectedValues);
 
       const destination = toFig(source, defaultValue, { longProgress: true });
       m.expect(destination).toBeObservable(expected);
@@ -156,7 +148,7 @@ describe('toFig', () => {
 
       const source = m.cold('   ---a-a-|');
       const subs = '            ^------!';
-      const expected = m.hot('  a--a-a-(b|)', expectedValues);
+      const expected = m.cold(' a--a-a-(b|)', expectedValues);
 
       const destination = toFig(source, defaultValue, { skipValue: true });
       m.expect(destination).toBeObservable(expected);
@@ -174,7 +166,7 @@ describe('toFig', () => {
 
       const source = m.cold('   -------#');
       const subs = '            ^------!';
-      const expected = m.hot('  a------(b|)', expectedValues);
+      const expected = m.cold(' a------(b|)', expectedValues);
 
       const destination = toFig(source, undefined, { skipError: true });
       m.expect(destination).toBeObservable(expected);
@@ -192,7 +184,7 @@ describe('toFig', () => {
 
       const source = m.cold('   ---b---|');
       const subs = '            ^------!';
-      const expected = m.hot('  a--b---|', expectedValues);
+      const expected = m.cold(' a--b---|', expectedValues);
 
       const destination = toFig(source, undefined, { skipProgress: true });
       m.expect(destination).toBeObservable(expected);
@@ -210,7 +202,7 @@ describe('toFig', () => {
 
       const source = m.cold('   -------|');
       const subs = '            ^------!';
-      const expected = m.hot('  a------(b|)', expectedValues);
+      const expected = m.cold(' a------(b|)', expectedValues);
 
       const destination = toFig(source, undefined);
       m.expect(destination).toBeObservable(expected);
@@ -221,7 +213,7 @@ describe('toFig', () => {
   it(
     'should throw error if skip every property',
     marbles((m) => {
-      const destination = toFig(m.hot('a|'), undefined, {
+      const destination = toFig(m.cold('a|'), undefined, {
         skipError: true,
         skipValue: true,
         skipProgress: true,

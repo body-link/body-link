@@ -1,5 +1,5 @@
 import { BehaviorSubject, Observable, Subscriber, Subscription } from 'rxjs';
-import { filter, map, take } from 'rxjs/operators';
+import { filter, map, share, take } from 'rxjs/operators';
 import { createFig, IFig, toFig } from './fig';
 import { Atom } from '../packlets/atom';
 import { cs, Signal } from '../packlets/rxjs-signal';
@@ -18,7 +18,7 @@ export class AtomCache<T> extends BehaviorSubject<IFig<T>> {
   public readonly getValue$: Observable<T>;
   public readonly load: Signal<void, void, Observable<IFig<T>>> = cs<void, void, Observable<IFig<T>>>(
     (emit) => {
-      const fig$ = toFig(this.getValue$.pipe(take(1)), this.value.value);
+      const fig$ = toFig(this.getValue$.pipe(take(1)), this.value.value).pipe(share());
       this._sub.add(fig$.subscribe((v) => this.next(v)));
       emit();
       return fig$;

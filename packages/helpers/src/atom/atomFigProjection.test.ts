@@ -64,6 +64,30 @@ describe('atomFigProjection', () => {
   );
 
   it(
+    'should project single value to fig start with custom fig',
+    marbles((m) => {
+      const sourceValues = { c: 873 };
+      const expectedValues = {
+        b: createFig<number>({ inProgress: true }),
+        c: createFig<number>({ value: sourceValues.c }),
+      };
+
+      const source = m.cold('   -----c|   ', sourceValues);
+      const subs = '            ^-----!   ';
+      const figBefore = m.hot(' b----c----', expectedValues);
+      const figAfter = m.hot('  b----c----', expectedValues);
+
+      const fig$ = Atom.create(createFig<TOption<number>>(createFig({ inProgress: true })));
+      const destination = source.pipe(atomFigProjection(fig$));
+
+      m.expect(fig$).toBeObservable(figBefore);
+      m.expect(destination).toBeObservable(source);
+      m.expect(fig$).toBeObservable(figAfter);
+      m.expect(source).toHaveSubscriptions(subs);
+    })
+  );
+
+  it(
     'should project multiple values to fig (longProgress)',
     marbles((m) => {
       const sourceValues = { c: 873, d: 9 };
@@ -212,7 +236,7 @@ describe('atomFigProjection', () => {
   );
 
   it(
-    'should projection empty to fig',
+    'should project empty to fig',
     marbles((m) => {
       const expectedValues = {
         a: createFig(),
