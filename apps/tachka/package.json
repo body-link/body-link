@@ -1,0 +1,37 @@
+{
+  "name": "@body-link/tachka",
+  "version": "0.0.0",
+  "description": "Service for organizing and managing time series data in a single database",
+  "private": true,
+  "engines": {
+    "node": ">=14.15.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/body-link/body-link/tree/master/apps/tachka"
+  },
+  "scripts": {
+    "start": "node lib",
+    "build": "heft test --clean --production",
+    "test": "heft test --clean --watch"
+  },
+  "author": {
+    "name": "Dmitrii Bykov",
+    "email": "sukazavr@gmail.com",
+    "url": "https://sukazavr.ru"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@body-link/eslint-config": "workspace:*",
+    "@body-link/prettier-config": "workspace:*",
+    "@body-link/helpers": "workspace:*",
+    "@body-link/type-guards": "workspace:*",
+    "@rushstack/heft": "~0.30.5",
+    "@rushstack/heft-node-rig": "~1.0.21",
+    "@types/heft-jest": "~1.0.2",
+    "@types/node": "~15.6.0",
+    "rxjs": ">=7.1.0",
+    "eslint": "~7.27.0",
+    "typescript": "^4.2.4"
+  }
+}

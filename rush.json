@@ -13,8 +13,9 @@
   "projectFolderMaxDepth": 2,
   "approvedPackagesPolicy": {
     "reviewCategories": [
+      "apps", // non-shipping projects
       "packages", // package projects that ship
-      "tools" // non-shipping projects that are part of the developer toolchain
+      "tools" // projects that are part of the developer toolchain
     ],
     "ignoredNpmScopes": ["@types"]
   },
@@ -115,6 +116,12 @@
   },
 
   "projects": [
+    {
+      "packageName": "@body-link/tachka",
+      "projectFolder": "apps/tachka",
+      "reviewCategory": "apps",
+      "shouldPublish": false
+    },
     {
       "packageName": "@body-link/ui",
       "projectFolder": "packages/ui",

@@ -4,15 +4,19 @@
   "packages": [
     {
       "name": "@body-link/eslint-config",
-      "allowedCategories": [ "packages" ]
+      "allowedCategories": [ "apps", "packages" ]
     },
     {
       "name": "@body-link/helpers",
-      "allowedCategories": [ "packages" ]
+      "allowedCategories": [ "apps", "packages" ]
+    },
+    {
+      "name": "@body-link/prettier-config",
+      "allowedCategories": [ "apps" ]
     },
     {
       "name": "@body-link/type-guards",
-      "allowedCategories": [ "packages" ]
+      "allowedCategories": [ "apps", "packages" ]
     },
     {
       "name": "@emotion/css",
@@ -28,11 +32,11 @@
     },
     {
       "name": "@rushstack/heft",
-      "allowedCategories": [ "packages" ]
+      "allowedCategories": [ "apps", "packages" ]
     },
     {
       "name": "@rushstack/heft-node-rig",
-      "allowedCategories": [ "packages" ]
+      "allowedCategories": [ "apps", "packages" ]
     },
     {
       "name": "@storybook/addon-actions",
@@ -68,7 +72,7 @@
     },
     {
       "name": "eslint",
-      "allowedCategories": [ "packages", "tools" ]
+      "allowedCategories": [ "apps", "packages", "tools" ]
     },
     {
       "name": "fast-check",
@@ -144,7 +148,7 @@
     },
     {
       "name": "rxjs",
-      "allowedCategories": [ "packages" ]
+      "allowedCategories": [ "apps", "packages" ]
     },
     {
       "name": "rxjs-marbles",
@@ -160,7 +164,7 @@
     },
     {
       "name": "typescript",
-      "allowedCategories": [ "packages", "tools" ]
+      "allowedCategories": [ "apps", "packages", "tools" ]
     },
     {
       "name": "uri-template",
