@@ -23,6 +23,82 @@
       "allowedCategories": [ "packages" ]
     },
     {
+      "name": "@hapi/hapi",
+      "allowedCategories": [ "apps" ]
+    },
+    {
+      "name": "@hapi/inert",
+      "allowedCategories": [ "apps" ]
+    },
+    {
+      "name": "@keyvhq/core",
+      "allowedCategories": [ "apps" ]
+    },
+    {
+      "name": "@keyvhq/mongo",
+      "allowedCategories": [ "apps" ]
+    },
+    {
+      "name": "@marblejs/core",
+      "allowedCategories": [ "apps" ]
+    },
+    {
+      "name": "@marblejs/messaging",
+      "allowedCategories": [ "apps" ]
+    },
+    {
+      "name": "@marblejs/middleware-body",
+      "allowedCategories": [ "apps" ]
+    },
+    {
+      "name": "@marblejs/middleware-io",
+      "allowedCategories": [ "apps" ]
+    },
+    {
+      "name": "@marblejs/middleware-logger",
+      "allowedCategories": [ "apps" ]
+    },
+    {
+      "name": "@morphic-ts/adt",
+      "allowedCategories": [ "apps" ]
+    },
+    {
+      "name": "@morphic-ts/algebras",
+      "allowedCategories": [ "apps" ]
+    },
+    {
+      "name": "@morphic-ts/batteries",
+      "allowedCategories": [ "apps" ]
+    },
+    {
+      "name": "@morphic-ts/common",
+      "allowedCategories": [ "apps" ]
+    },
+    {
+      "name": "@morphic-ts/eq-interpreters",
+      "allowedCategories": [ "apps" ]
+    },
+    {
+      "name": "@morphic-ts/io-ts-interpreters",
+      "allowedCategories": [ "apps" ]
+    },
+    {
+      "name": "@morphic-ts/model-algebras",
+      "allowedCategories": [ "apps" ]
+    },
+    {
+      "name": "@morphic-ts/ord-interpreters",
+      "allowedCategories": [ "apps" ]
+    },
+    {
+      "name": "@morphic-ts/show-interpreters",
+      "allowedCategories": [ "apps" ]
+    },
+    {
+      "name": "@morphic-ts/summoners",
+      "allowedCategories": [ "apps" ]
+    },
+    {
       "name": "@popperjs/core",
       "allowedCategories": [ "packages" ]
     },
@@ -63,6 +139,14 @@
       "allowedCategories": [ "packages" ]
     },
     {
+      "name": "agenda",
+      "allowedCategories": [ "apps" ]
+    },
+    {
+      "name": "agendash",
+      "allowedCategories": [ "apps" ]
+    },
+    {
       "name": "big.js",
       "allowedCategories": [ "packages" ]
     },
@@ -75,6 +159,10 @@
       "allowedCategories": [ "apps", "packages", "tools" ]
     },
     {
+      "name": "express",
+      "allowedCategories": [ "apps" ]
+    },
+    {
       "name": "fast-check",
       "allowedCategories": [ "packages" ]
     },
@@ -84,7 +172,7 @@
     },
     {
       "name": "fp-ts",
-      "allowedCategories": [ "packages" ]
+      "allowedCategories": [ "apps", "packages" ]
     },
     {
       "name": "glob",
@@ -92,7 +180,7 @@
     },
     {
       "name": "io-ts",
-      "allowedCategories": [ "packages" ]
+      "allowedCategories": [ "apps", "packages" ]
     },
     {
       "name": "io-ts-codegen",
@@ -104,7 +192,7 @@
     },
     {
       "name": "io-ts-types",
-      "allowedCategories": [ "packages" ]
+      "allowedCategories": [ "apps", "packages" ]
     },
     {
       "name": "io-ts-validator",
@@ -120,15 +208,23 @@
     },
     {
       "name": "memoize-one",
-      "allowedCategories": [ "packages" ]
+      "allowedCategories": [ "apps", "packages" ]
+    },
+    {
+      "name": "mongodb",
+      "allowedCategories": [ "apps" ]
     },
     {
       "name": "monocle-ts",
-      "allowedCategories": [ "packages" ]
+      "allowedCategories": [ "apps", "packages" ]
+    },
+    {
+      "name": "nanoid",
+      "allowedCategories": [ "apps" ]
     },
     {
       "name": "newtype-ts",
-      "allowedCategories": [ "packages" ]
+      "allowedCategories": [ "apps", "packages" ]
     },
     {
       "name": "prettier",
@@ -155,8 +251,16 @@
       "allowedCategories": [ "packages" ]
     },
     {
+      "name": "telegram-format",
+      "allowedCategories": [ "apps" ]
+    },
+    {
+      "name": "ts-dedent",
+      "allowedCategories": [ "apps" ]
+    },
+    {
       "name": "ts-node",
-      "allowedCategories": [ "packages" ]
+      "allowedCategories": [ "apps", "packages" ]
     },
     {
       "name": "ts-snippet",
@@ -169,6 +273,18 @@
     {
       "name": "uri-template",
       "allowedCategories": [ "packages" ]
+    },
+    {
+      "name": "winston",
+      "allowedCategories": [ "apps" ]
+    },
+    {
+      "name": "winston-mongodb",
+      "allowedCategories": [ "apps" ]
+    },
+    {
+      "name": "winston-telegram",
+      "allowedCategories": [ "apps" ]
     }
   ]
 }
