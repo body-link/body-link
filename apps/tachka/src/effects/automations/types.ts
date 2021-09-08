@@ -1,5 +1,5 @@
 import { event } from '@marblejs/core';
-import { t } from '../../common/modules';
+import * as t from 'io-ts';
 import { tr } from '../../data/io-ts-refine';
 
 export enum AutomationCommandType {

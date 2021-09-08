@@ -1,12 +1,12 @@
-import { CollectionInfo, Db, MongoClient } from 'mongodb';
-import { createContextToken, createReader, useContext } from '@marblejs/core';
 import { arrayToRecord } from '@body-link/helpers';
 import { isDefined, isError, isUndefined, TOption } from '@body-link/type-guards';
-import { getState } from '../../state';
+import { createContextToken, createReader, useContext } from '@marblejs/core';
+import { CollectionInfo, Db, MongoClient } from 'mongodb';
 import { getRecordCollectionName, RecordAny, recordMeta, toMongo } from '../../data/record/RecordAny';
-import { Assistant, AssistantToken } from '../assistant/Assistant';
-import { createReplyError } from '../../data/Reply';
+import { Reply } from '../../data/Reply';
 import { ReplyEntry } from '../../data/ReplyEntry';
+import { getState } from '../../state';
+import { Assistant, AssistantToken } from '../assistant/Assistant';
 
 export class RecordManager {
   private readonly _assistant: Assistant;
@@ -103,7 +103,7 @@ export class RecordManager {
     } catch (error) {
       this._connected = false;
       this._assistant.reply(
-        createReplyError({
+        Reply.of.ReplyError({
           entry: ReplyEntry.build({
             subject: 'Record Manager',
             action: 'connect',

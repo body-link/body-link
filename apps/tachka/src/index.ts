@@ -5,8 +5,11 @@ import {
   createServer,
   httpListener,
   HttpServer,
+  HttpStatus,
   r,
+  RouteEffect,
   ServerIO,
+  useContext,
 } from '@marblejs/core';
 import {
   eventBus,
@@ -15,23 +18,41 @@ import {
   EventBusToken,
   messagingListener,
 } from '@marblejs/messaging';
-import { IO } from 'fp-ts/IO';
-import { logger$ } from '@marblejs/middleware-logger';
 import { bodyParser$ } from '@marblejs/middleware-body';
-import { map } from 'rxjs/operators';
-
-import { getState } from './state';
-import { KVStorage, KVStorageToken } from './dependencies/kv-storage/KVStorage';
+import { logger$ } from '@marblejs/middleware-logger';
+import * as E from 'fp-ts/Either';
+import { flow } from 'fp-ts/function';
+import * as io from 'fp-ts/IO';
+import * as ro from 'rxjs/operators';
+import { throwErrorAppHttp, withBody } from './common/response';
 import { assistant, AssistantToken } from './dependencies/assistant/Assistant';
-import { recordManager, RecordManagerToken } from './dependencies/record-manager/RecordManager';
 import {
   automationManager,
   automationManagerMiddleware$,
   AutomationManagerToken,
 } from './dependencies/automation-manager/automation-manager';
+import {
+  googleClientOAuth2,
+  GoogleClientOAuth2Token,
+} from './dependencies/integrations/google/GoogleClientOAuth2';
+import { KVStorage, KVStorageToken } from './dependencies/kv-storage/KVStorage';
+import { recordManager, RecordManagerToken } from './dependencies/record-manager/RecordManager';
 import { assistantReply$ } from './effects/assistant/assistantReply';
-import { handleError$ } from './effects/system/handleError';
 import { sleepAsAndroidPull$ } from './effects/automations/sleepAsAndroidPull';
+import { handleError$ } from './effects/system/handleError';
+import { getState } from './state';
+
+const ef$: RouteEffect = r.pipe(
+  r.matchPath('/1'),
+  r.matchType('GET'),
+  r.useEffect((req$, ctx) => {
+    const client = useContext(GoogleClientOAuth2Token)(ctx.ask);
+    return req$.pipe(
+      ro.mergeMap(client.state.get),
+      ro.map(flow(E.fold(throwErrorAppHttp(HttpStatus.BAD_REQUEST), withBody)))
+    );
+  })
+);
 
 const server: Promise<ServerIO<HttpServer>> = createServer({
   port: getState().port,
@@ -40,15 +61,11 @@ const server: Promise<ServerIO<HttpServer>> = createServer({
     effects: [
       combineRoutes('/', {
         effects: [
-          r.pipe(
-            r.matchPath('/1'),
-            r.matchType('GET'),
-            r.useEffect((req$) => req$.pipe(map(() => ({ body: '11111111' }))))
-          ),
+          ef$,
           r.pipe(
             r.matchPath('/'),
             r.matchType('GET'),
-            r.useEffect((req$) => req$.pipe(map(() => ({ body: 'Hello!' }))))
+            r.useEffect((req$) => req$.pipe(ro.map(() => ({ body: 'Hello!' }))))
           ),
         ],
         middlewares: [bodyParser$()],
@@ -56,6 +73,7 @@ const server: Promise<ServerIO<HttpServer>> = createServer({
     ],
   }),
   dependencies: [
+    bindLazilyTo(GoogleClientOAuth2Token)(googleClientOAuth2),
     bindLazilyTo(AssistantToken)(assistant),
     bindLazilyTo(KVStorageToken)(KVStorage),
     bindEagerlyTo(RecordManagerToken)(recordManager),
@@ -72,6 +90,6 @@ const server: Promise<ServerIO<HttpServer>> = createServer({
   ],
 });
 
-const run: IO<void> = async () => (await server)();
+const main: io.IO<void> = async () => (await server)();
 
-run();
+main();

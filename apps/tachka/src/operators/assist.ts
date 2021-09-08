@@ -1,59 +1,60 @@
-import { Event } from '@marblejs/core';
 import { isDefined, isError, isObject, isText, TAnyObject } from '@body-link/type-guards';
-import { ReplyEntry } from '../data/ReplyEntry';
-import { defer, Observable, of } from 'rxjs';
-import { catchError, mergeMap } from 'rxjs/operators';
+import { Event } from '@marblejs/core';
 import { pipe } from 'fp-ts/function';
+import * as r from 'rxjs';
+import * as ro from 'rxjs/operators';
+import { Reply, ReplyError } from '../data/Reply';
+import { ReplyEntry } from '../data/ReplyEntry';
 import { ReplyCommand } from '../effects/assistant/types';
-import { createReplyError, Reply, ReplyError } from '../data/Reply';
 
 export function assist<InputEvent extends Event, CallEvent extends Event>(
   entry: ReplyEntry,
-  callFn: (event: InputEvent, entry: ReplyEntry) => Observable<CallEvent>
-): (source: Observable<InputEvent>) => Observable<CallEvent>;
+  callFn: (event: InputEvent, entry: ReplyEntry) => r.Observable<CallEvent>
+): (source: r.Observable<InputEvent>) => r.Observable<CallEvent>;
 
 export function assist<InputEvent extends Event>(
   entry: ReplyEntry,
-  callFn: (event: InputEvent, entry: ReplyEntry) => Observable<Reply>
-): (source: Observable<InputEvent>) => Observable<ReplyCommand>;
+  callFn: (event: InputEvent, entry: ReplyEntry) => r.Observable<Reply>
+): (source: r.Observable<InputEvent>) => r.Observable<ReplyCommand>;
 
 export function assist<InputEvent extends Event, CallEvent extends Event>(
   entry: ReplyEntry,
-  callFn: (event: InputEvent, entry: ReplyEntry) => Observable<CallEvent | Reply>
-): (source: Observable<InputEvent>) => Observable<CallEvent | ReplyCommand> {
-  const handleError = (error: unknown): Observable<ReplyError> => {
+  callFn: (event: InputEvent, entry: ReplyEntry) => r.Observable<CallEvent | Reply>
+): (source: r.Observable<InputEvent>) => r.Observable<CallEvent | ReplyCommand> {
+  const handleError = (error: unknown): r.Observable<ReplyError> => {
     const message = isError(error)
       ? error.message
       : isObject(error) && isText((error as TAnyObject).message)
       ? (error as { message: string }).message
       : String(error);
-    return of(
-      createReplyError({
+    return r.of(
+      Reply.as.ReplyError({
         entry,
         error: message,
       })
     );
   };
-  return (source: Observable<InputEvent>): Observable<CallEvent | ReplyCommand> =>
-    source.pipe(
-      mergeMap((event) => {
+  return (source: r.Observable<InputEvent>): r.Observable<CallEvent | ReplyCommand> =>
+    pipe(
+      source,
+      ro.mergeMap((event) => {
         if (isDefined(event.error)) {
-          return of(event as Event as CallEvent);
+          return r.of(event as Event as CallEvent);
         }
 
         if (ReplyCommand.is(event)) {
-          return of(event);
+          return r.of(event);
         }
 
         return pipe(
-          defer(() => {
+          r.defer(() => {
             try {
-              return pipe(callFn(event, entry), catchError(handleError));
+              return pipe(callFn(event, entry), ro.catchError(handleError));
             } catch (error) {
               return handleError(error);
             }
           }),
-          mergeMap((result) => {
+          ro.mergeMap((result) => {
             const eventsOut: Event[] = [];
             if (Reply.type.is(result)) {
               eventsOut.push(

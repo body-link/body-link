@@ -1,5 +1,6 @@
+import * as t from 'io-ts';
+import * as tt from 'io-ts-types';
 import { refine } from '../utils';
-import { t, tt } from '../../common/modules';
 
 export const NonEmptyString: t.StringC = refine(t.string, tt.NonEmptyString.is, 'NonEmptyString');
 

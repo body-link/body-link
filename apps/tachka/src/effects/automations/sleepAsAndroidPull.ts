@@ -1,22 +1,23 @@
-import { MsgEffect, reply } from '@marblejs/messaging';
 import { matchEvent, useContext } from '@marblejs/core';
-import { RecordManagerToken } from '../../dependencies/record-manager/RecordManager';
-import { assist } from '../../operators/assist';
-import { ReplyEntry } from '../../data/ReplyEntry';
-import { of } from 'rxjs';
-import { map, mergeMap } from 'rxjs/operators';
+import { MsgEffect, reply } from '@marblejs/messaging';
+import * as E from 'fp-ts/Either';
 import { pipe } from 'fp-ts/function';
 import { nanoid } from 'nanoid';
-import { getOrElseW } from 'fp-ts/Either';
-import { throwErrors } from '../../data/utils';
-import { AutomationCommandType, SleepAsAndroidPullCommand, SleepAsAndroidPulledEvent } from './types';
+import * as r from 'rxjs';
+import * as ro from 'rxjs/operators';
+import { eitherMapLeftToErrorDecode, throwErrorApp } from '../../common/utils';
 import { RecordNumber, RecordNumberData } from '../../data/record/RecordNumber';
+import { ReplyEntry } from '../../data/ReplyEntry';
+import { RecordManagerToken } from '../../dependencies/record-manager/RecordManager';
+import { assist } from '../../operators/assist';
 import { validateEvent } from '../../operators/validateEvent';
+import { AutomationCommandType, SleepAsAndroidPullCommand, SleepAsAndroidPulledEvent } from './types';
 
 export const sleepAsAndroidPull$: MsgEffect = (event$, ctx) => {
   const recordManager = useContext(RecordManagerToken)(ctx.ask);
   const subject = AutomationCommandType.SLEEP_AS_ANDROID_PULL;
-  return event$.pipe(
+  return pipe(
+    event$,
     matchEvent(SleepAsAndroidPullCommand),
     assist(
       ReplyEntry.build({
@@ -31,8 +32,9 @@ export const sleepAsAndroidPull$: MsgEffect = (event$, ctx) => {
         action: 'work',
       }),
       (event) =>
-        of(event.payload).pipe(
-          map(({ owner, group, tsInitialFrom }) =>
+        pipe(
+          r.of(event.payload),
+          ro.map(({ owner, group, tsInitialFrom }) =>
             pipe(
               RecordNumber.create({
                 id: nanoid(),
@@ -45,11 +47,12 @@ export const sleepAsAndroidPull$: MsgEffect = (event$, ctx) => {
                 type: 'RecordNumber',
                 data: tsInitialFrom as unknown as RecordNumberData,
               }),
-              getOrElseW(throwErrors)
+              eitherMapLeftToErrorDecode,
+              E.getOrElseW(throwErrorApp)
             )
           ),
-          mergeMap(recordManager.save),
-          mergeMap(() => [
+          ro.mergeMap(recordManager.save),
+          ro.mergeMap(() => [
             reply(event)(SleepAsAndroidPulledEvent.create()),
             SleepAsAndroidPulledEvent.create(),
           ])

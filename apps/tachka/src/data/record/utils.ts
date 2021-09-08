@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { option, Program, refine, summon, M } from '../utils';
+import * as t from 'io-ts';
 import { tr } from '../io-ts-refine';
-import { t } from '../../common/modules';
+import { M, option, Program, refine, summon } from '../utils';
 
 export interface IRecordBase {
   id: string;

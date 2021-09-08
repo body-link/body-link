@@ -6,13 +6,14 @@ import {
   useContext,
 } from '@marblejs/core';
 import { EventBusClientToken } from '@marblejs/messaging';
-import { firstValueFrom } from 'rxjs';
-import { filter } from 'rxjs/operators';
 import { Agenda, Job } from 'agenda';
 import Agendash from 'agendash';
 import express, { Express } from 'express';
-import { getState } from '../../state';
+import { pipe } from 'fp-ts/function';
+import * as r from 'rxjs';
+import * as ro from 'rxjs/operators';
 import { AutomationCommandType } from '../../effects/automations/types';
+import { getState } from '../../state';
 
 const ROUTE: string = '/dash';
 
@@ -32,7 +33,7 @@ export const automationManager = createReader(async (ask) => {
 
   atms.forEach((a) => {
     agenda.define(a.type, { concurrency: 1 }, (job: Job) =>
-      firstValueFrom(
+      r.firstValueFrom(
         client.send({
           type: a.type,
           payload: job.attrs.data,
@@ -58,4 +59,4 @@ export const automationManager = createReader(async (ask) => {
 });
 
 export const automationManagerMiddleware$: HttpMiddlewareEffect = (req$, ctx) =>
-  req$.pipe(filter(useContext(AutomationManagerToken)(ctx.ask)));
+  pipe(req$, ro.filter(useContext(AutomationManagerToken)(ctx.ask)));

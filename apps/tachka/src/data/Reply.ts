@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/naming-convention,@rushstack/typedef-var */
-import { dedent } from 'ts-dedent';
-import { markdownv2 as f } from 'telegram-format';
 import { isDefined } from '@body-link/type-guards';
-import { AOfMorphADT, AsOpaque, AType, EType, summon, Variant } from './utils';
+import { markdownv2 as f } from 'telegram-format';
+import { dedent } from 'ts-dedent';
 import { LogEntry } from './LogEntry';
 import { ReplyEntry } from './ReplyEntry';
+import { AOfMorphADT, AsOpaque, AType, EType, summon, Variant } from './utils';
 
 const ReplyResult_ = summon((F) =>
   F.interface(
@@ -54,13 +54,6 @@ export const Reply = Variant({
   ReplyRequest,
 });
 export type Reply = AOfMorphADT<typeof Reply>;
-
-export const createReplyResult = (p: Omit<ReplyResultRaw, 'type'>): ReplyResult =>
-  ReplyResult.build({ type: 'ReplyResult', ...p });
-export const createReplyError = (p: Omit<ReplyErrorRaw, 'type'>): ReplyError =>
-  ReplyError.build({ type: 'ReplyError', ...p });
-export const createReplyRequest = (p: Omit<ReplyRequestRaw, 'type'>): ReplyRequest =>
-  ReplyRequest.build({ type: 'ReplyRequest', ...p });
 
 export const convertReplyToLogEntry = Reply.matchStrict({
   ReplyResult: (r) => LogEntry.build({ level: 'info', message: ReplyResult.show.show(r) }),
